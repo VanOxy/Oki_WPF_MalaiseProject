@@ -75,6 +75,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Student.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -83,7 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Model\" />
+    <Folder Include="DAO\" />
+    <Folder Include="DTO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
