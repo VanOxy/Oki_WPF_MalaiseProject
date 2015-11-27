@@ -6,11 +6,11 @@ using System.Web;
 
 namespace WCF.Helpers
 {
-    public class Connection
+    public class ConnectionString
     {
         private string _connectionString;
 
-        public Connection()
+        public ConnectionString()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["UnivercityDatabase"].ConnectionString;
         }

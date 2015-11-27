@@ -72,10 +72,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service1.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ConnectionString.cs" />
+    <Compile Include="Helpers\UnivercityContext.cs" />
+    <Compile Include="Migrations\201511271400240_Init.cs" />
+    <Compile Include="Migrations\201511271400240_Init.Designer.cs">
+      <DependentUpon>201511271400240_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\Faculty.cs" />
+    <Compile Include="Model\Section.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\Teacher.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -95,6 +108,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511271400240_Init.resx">
+      <DependentUpon>201511271400240_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

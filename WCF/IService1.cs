@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WCF.Model;
 
 namespace WCF
 {
@@ -16,6 +17,12 @@ namespace WCF
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
+
+        [OperationContract]
+        bool AddStudent(Student student);
+
+        [OperationContract]
+        bool AddTeacher(Teacher prof);
     }
 
     [DataContract]
