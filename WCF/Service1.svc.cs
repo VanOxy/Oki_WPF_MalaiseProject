@@ -10,24 +10,11 @@ using WCF.Model;
 
 namespace WCF
 {
-    public class Service1 : IService1
+    public class UnivercityService : IService1
     {
         public string GetData(string value)
         {
             return string.Format("Service answered: {0}", value);
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
         }
 
         public bool AddStudent(Student student)
@@ -42,7 +29,6 @@ namespace WCF
                         Age = student.Age,
                         Sex = student.Sex,
                         SectionId = student.SectionId,
-                        Courses = student.Courses,
                         CurrentsClass = student.CurrentsClass,
                         EnrollmentDate = student.EnrollmentDate
                     });
@@ -56,7 +42,7 @@ namespace WCF
             }
         }
 
-        public bool AddTeacher(Teacher prof)
+        public bool AddTeacher(Teacher teacher)
         {
             using (var db = new UnivercityContext())
             {
@@ -64,9 +50,9 @@ namespace WCF
                 {
                     db.Teachers.Add(new Teacher()
                     {
-                        Name = "Test Teacher",
-                        Age = 42,
-                        Grade = "Doc"
+                        Name = teacher.Name,
+                        Age = teacher.Age,
+                        Grade = teacher.Grade
                     });
                     db.SaveChanges();
                     return true;
@@ -76,6 +62,19 @@ namespace WCF
                     return false;
                 }
             }
+        }
+
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
         }
     }
 }
