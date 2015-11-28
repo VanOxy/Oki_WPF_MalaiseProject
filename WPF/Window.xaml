@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="Univercity Manager"
+        MinHeight="450" MinWidth="700" Width="1100" Height="650"
+        WindowStartupLocation="CenterScreen"
+        Icon="src/img/icon.png"
         DataContext="{Binding Source={StaticResource Locator}, Path=Selector}">
 
     <Frame Content="{Binding ActiveView}" NavigationUIVisibility="Hidden" />
