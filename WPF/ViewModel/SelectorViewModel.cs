@@ -15,9 +15,9 @@ namespace WPF.ViewModel
             Messenger.Default.Register<ChangePageMessage>(this, ChangePage);
         }
 
+        private Page _activeView;
         private MainPage _mainPage;
         private SecondPage _secondPage;
-        private Page _activeView;
 
         public Page ActiveView
         {

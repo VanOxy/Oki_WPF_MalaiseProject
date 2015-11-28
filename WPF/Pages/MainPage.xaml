@@ -10,7 +10,8 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
     <StackPanel>
-        <Label Content="Main Page" FontSize="34" />
+        <Label Content="Univercity Manager" HorizontalAlignment="Right" Margin="20 0"
+               FontSize="34" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF177CC1" />
         <Label Content="{Binding MyString}" Height="30" />
         <Button Content="Increment Counter" Command="{Binding IncrementCounterCommand}" />
         <Label Height="30" />
