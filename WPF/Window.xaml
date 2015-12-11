@@ -6,24 +6,29 @@
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
         Title="Univercity Manager"
-        MinHeight="450" MinWidth="700" Width="1100" Height="650"
+        MinHeight="450" MinWidth="700" Width="1100" Height="500"
         WindowStartupLocation="CenterScreen"
         Icon="src/img/icon.png"
         DataContext="{Binding Source={StaticResource Locator}, Path=Selector}">
 
-    <StackPanel>
-        <Label Content="Univercity Manager" HorizontalAlignment="Right" Margin="20 0"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Univercity Manager" HorizontalAlignment="Right" Margin="20 0" Grid.Row="0"
                FontSize="34" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF177CC1" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
                     <SkewTransform />
-                    <RotateTransform Angle="-0.934" />
+                    <RotateTransform Angle="-1.854" />
                     <TranslateTransform />
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
 
-        <Frame Content="{Binding ActiveView}" NavigationUIVisibility="Hidden" />
-    </StackPanel>
+        <Frame Content="{Binding ActivePage}" NavigationUIVisibility="Hidden" Grid.Row="1" />
+    </Grid>
 </Window>

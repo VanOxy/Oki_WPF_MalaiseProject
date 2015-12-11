@@ -10,36 +10,51 @@ namespace WPF.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            // Register VM's
-            SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<SecondViewModel>();
+            // Register ViewModels
             SimpleIoc.Default.Register<SelectorViewModel>();
+            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<StudentsViewModel>();
+            SimpleIoc.Default.Register<ProfessorsViewModel>();
+            SimpleIoc.Default.Register<CoursViewModel>();
+            SimpleIoc.Default.Register<SectionsViewModel>();
+            SimpleIoc.Default.Register<FacultiesViewModel>();
         }
 
         #region Declaring VM's
 
         public SelectorViewModel Selector
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<SelectorViewModel>();
-            }
+            get { return ServiceLocator.Current.GetInstance<SelectorViewModel>(); }
         }
 
         public MainViewModel Main
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
+            get { return ServiceLocator.Current.GetInstance<MainViewModel>(); }
         }
 
-        public SecondViewModel Second
+        public StudentsViewModel Students
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<SecondViewModel>();
-            }
+            get { return ServiceLocator.Current.GetInstance<StudentsViewModel>(); }
+        }
+
+        public ProfessorsViewModel Professors
+        {
+            get { return ServiceLocator.Current.GetInstance<ProfessorsViewModel>(); }
+        }
+
+        public CoursViewModel Cours
+        {
+            get { return ServiceLocator.Current.GetInstance<CoursViewModel>(); }
+        }
+
+        public SectionsViewModel Sections
+        {
+            get { return ServiceLocator.Current.GetInstance<SectionsViewModel>(); }
+        }
+
+        public FacultiesViewModel Faculties
+        {
+            get { return ServiceLocator.Current.GetInstance<FacultiesViewModel>(); }
         }
 
         #endregion Declaring VM's

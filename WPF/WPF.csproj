@@ -78,11 +78,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Messages\ChangePageMessage.cs" />
+    <Compile Include="Pages\CoursPage.xaml.cs">
+      <DependentUpon>CoursPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FacultiesPage.xaml.cs">
+      <DependentUpon>FacultiesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SecondPage.xaml.cs">
-      <DependentUpon>SecondPage.xaml</DependentUpon>
+    <Compile Include="Pages\ProfessorsPage.xaml.cs">
+      <DependentUpon>ProfessorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SectionsPage.xaml.cs">
+      <DependentUpon>SectionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StudentsPage.xaml.cs">
       <DependentUpon>StudentsPage.xaml</DependentUpon>
@@ -92,11 +101,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CoursViewModel.cs" />
+    <Compile Include="ViewModel\FacultiesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ProfessorsViewModel.cs" />
+    <Compile Include="ViewModel\SectionsViewModel.cs" />
     <Compile Include="ViewModel\SelectorViewModel.cs" />
-    <Compile Include="ViewModel\SecondViewModel.cs" />
+    <Compile Include="ViewModel\StudentsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Page Include="Pages\SecondPage.xaml">
+    <Page Include="Pages\CoursPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FacultiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProfessorsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SectionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

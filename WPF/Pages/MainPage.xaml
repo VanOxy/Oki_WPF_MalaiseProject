@@ -10,15 +10,24 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
         <StackPanel>
-            <Label Content="{Binding MyString}" Height="30" />
-            <Button Content="Increment Counter" Command="{Binding IncrementCounterCommand}" />
-            <Label Height="30" Content="Juste a blanc space label" />
-            <Button Content="Get info from Service" Command="{Binding AskWebServiceCommand}" />
-            <TextBox Text="{Binding ServiceAsk}" />
-            <Label Content="{Binding ServiceAnswer}" Height="25" />
-            <Label Height="50" />
+            <Label Content="Label à remplir à la demande du client"></Label>
+            <Button Content="Geres les étudiants" Command="{Binding SwitchToStudentsPageCommand}"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Geres les professeurs" Command="{Binding SwitchToProfessorsPageCommand}"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Geres les cours" Command="{Binding SwitchToCoursesPageCommand}"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Geres les sections" Command="{Binding SwitchToSectionsPageCommand}"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Geres les facultées" Command="{Binding SwitchToFacultiesPageCommand}"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
         </StackPanel>
-        <Button Content="Go to SeconPage" Command="{Binding ChangeToSecondPageCommand}" VerticalAlignment="Bottom" />
     </Grid>
 </Page>

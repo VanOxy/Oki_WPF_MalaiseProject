@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPF.Pages
 {
     /// <summary>
-    /// Interaction logic for SecondPage.xaml
+    /// Interaction logic for FacultiesPage.xaml
     /// </summary>
-    public partial class SecondPage : Page
+    public partial class FacultiesPage : Page
     {
-        public SecondPage()
+        public FacultiesPage()
         {
             InitializeComponent();
         }

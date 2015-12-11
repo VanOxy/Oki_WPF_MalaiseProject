@@ -11,41 +11,76 @@ namespace WPF.ViewModel
         public SelectorViewModel()
         {
             _mainPage = new MainPage();
-            ActiveView = _mainPage;
+            ActivePage = _mainPage;
             Messenger.Default.Register<ChangePageMessage>(this, ChangePage);
         }
 
-        private Page _activeView;
-        private MainPage _mainPage;
-        private SecondPage _secondPage;
+        // the page which is binded with MainWindow
+        private Page _activePage;
 
-        public Page ActiveView
+        public Page ActivePage
         {
             get
             {
-                return _activeView;
+                return _activePage;
             }
             set
             {
-                if (_activeView == value)
+                if (_activePage == value)
                     return;
-                _activeView = value;
-                RaisePropertyChanged("ActiveView");
+                _activePage = value;
+                RaisePropertyChanged("ActivePage");
             }
         }
 
+        private MainPage _mainPage;
+        private StudentsPage _studentsPage;
+        private ProfessorsPage _professorsPage;
+        private CoursPage _coursPage;
+        private SectionsPage _sectionsPage;
+        private FacultiesPage _facultiesPage;
+
+        /// <summary>
+        /// Method which will change the active page (binded into MainWindow) by the page asked by user.
+        /// The information about the page is transmitted into message (MVVMLight.Messenger class).
+        /// </summary>
+        /// <param name="message"></param>
         private void ChangePage(ChangePageMessage message)
         {
             switch (message.PageName)
             {
                 case "main":
-                    ActiveView = _mainPage;
+                    ActivePage = _mainPage;
                     break;
 
-                case "second":
-                    if (_secondPage == null)
-                        _secondPage = new SecondPage();
-                    ActiveView = _secondPage;
+                case "students":
+                    if (_studentsPage == null)
+                        _studentsPage = new StudentsPage();
+                    ActivePage = _studentsPage;
+                    break;
+
+                case "professors":
+                    if (_professorsPage == null)
+                        _professorsPage = new ProfessorsPage();
+                    ActivePage = _professorsPage;
+                    break;
+
+                case "cours":
+                    if (_coursPage == null)
+                        _coursPage = new CoursPage();
+                    ActivePage = _coursPage;
+                    break;
+
+                case "sections":
+                    if (_sectionsPage == null)
+                        _sectionsPage = new SectionsPage();
+                    ActivePage = _sectionsPage;
+                    break;
+
+                case "faculties":
+                    if (_facultiesPage == null)
+                        _facultiesPage = new FacultiesPage();
+                    ActivePage = _facultiesPage;
                     break;
 
                 default:

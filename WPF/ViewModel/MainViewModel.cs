@@ -11,44 +11,50 @@ namespace WPF.ViewModel
     {
         public MainViewModel()
         {
-            MyString = "Push the Button !";
-            IncrementCounterCommand = new RelayCommand(IncrementCounter);
-            ChangeToSecondPageCommand = new RelayCommand(ChangeToSecondPage);
+            SwitchToStudentsPageCommand = new RelayCommand(SwitchToStudentsPage);
+            SwitchToProfessorsPageCommand = new RelayCommand(SwitchToProfessorsPage);
+            SwitchToCoursesPageCommand = new RelayCommand(SwitchToCoursesPage);
+            SwitchToSectionsPageCommand = new RelayCommand(SwitchToSectionsPage);
+            SwitchToFacultiesPageCommand = new RelayCommand(SwitchToFacultiesPage);
             AskWebServiceCommand = new RelayCommand(AskWebService);
         }
 
         #region Navigation
 
-        public ICommand ChangeToSecondPageCommand { get; private set; }
+        public ICommand SwitchToStudentsPageCommand { get; private set; }
+        public ICommand SwitchToProfessorsPageCommand { get; private set; }
+        public ICommand SwitchToCoursesPageCommand { get; private set; }
+        public ICommand SwitchToSectionsPageCommand { get; private set; }
+        public ICommand SwitchToFacultiesPageCommand { get; private set; }
 
-        private void ChangeToSecondPage()
+        private void SwitchToStudentsPage()
         {
-            Messenger.Default.Send(new ChangePageMessage("second"));
+            Messenger.Default.Send(new ChangePageMessage("students"));
+        }
+
+        private void SwitchToProfessorsPage()
+        {
+            Messenger.Default.Send(new ChangePageMessage("professors"));
+        }
+
+        private void SwitchToCoursesPage()
+        {
+            Messenger.Default.Send(new ChangePageMessage("cours"));
+        }
+
+        private void SwitchToSectionsPage()
+        {
+            Messenger.Default.Send(new ChangePageMessage("sections"));
+        }
+
+        private void SwitchToFacultiesPage()
+        {
+            Messenger.Default.Send(new ChangePageMessage("faculties"));
         }
 
         #endregion Navigation
 
-        public ICommand IncrementCounterCommand { get; private set; }
         public ICommand AskWebServiceCommand { get; private set; }
-
-        private int counter = 0;
-
-        private string _myString;
-
-        public string MyString
-        {
-            get
-            {
-                return _myString;
-            }
-            set
-            {
-                if (value == _myString)
-                    return;
-                _myString = value;
-                RaisePropertyChanged("MyString");
-            }
-        }
 
         private string _serviceAnswer;
 
@@ -76,12 +82,6 @@ namespace WPF.ViewModel
                 _serviceAsk = value;
                 RaisePropertyChanged("ServiceAsk");
             }
-        }
-
-        private void IncrementCounter()
-        {
-            counter++;
-            MyString = counter.ToString();
         }
 
         private async void AskWebService()

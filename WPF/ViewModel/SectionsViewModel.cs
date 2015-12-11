@@ -6,18 +6,22 @@ using WPF.Message;
 
 namespace WPF.ViewModel
 {
-    public class SecondViewModel : ViewModelBase
+    public class SectionsViewModel : ViewModelBase
     {
-        public ICommand ChangeToMainPageCommand { get; set; }
-
-        public SecondViewModel()
+        public SectionsViewModel()
         {
             ChangeToMainPageCommand = new RelayCommand(ChangeToMainPage);
         }
+
+        #region Navigation
+
+        public ICommand ChangeToMainPageCommand { get; set; }
 
         private void ChangeToMainPage()
         {
             Messenger.Default.Send(new ChangePageMessage("main"));
         }
+
+        #endregion Navigation
     }
 }

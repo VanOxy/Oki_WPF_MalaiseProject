@@ -6,8 +6,54 @@
       xmlns:local="clr-namespace:WPF.Pages"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="700"
-      Title="StudentsPage">
+      Title="StudentsPage"
+      DataContext="{Binding Source={StaticResource Locator}, Path=Students}">
+
+    <Page.Resources>
+        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent},
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource"
+                                 Background="Transparent"
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <Label Content="Second Page" FontSize="34" />
+            <Label Height="45" />
+            <TextBox Style="{StaticResource placeHolder}" Tag="John - ta mère!!! What da fuck!!"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Width="250" />
+            <Label Height="45" />
+            <Button Content="Go to MainPage" Command="{Binding ChangeToMainPageCommand}" />
+        </StackPanel>
     </Grid>
 </Page>
