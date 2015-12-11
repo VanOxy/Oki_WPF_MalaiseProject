@@ -16,18 +16,20 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
+        <StackPanel Grid.Column="0">
             <Label Content="Label à remplir à la demande du client"></Label>
-            <Button Content="Geres les étudiants" Command="{Binding SwitchToStudentsPageCommand}"
+            <Button Content="Etudiants" Command="{Binding SwitchToStudentsPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
-            <Button Content="Geres les professeurs" Command="{Binding SwitchToProfessorsPageCommand}"
+            <Button Content="Professeurs" Command="{Binding SwitchToProfessorsPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
-            <Button Content="Geres les cours" Command="{Binding SwitchToCoursesPageCommand}"
+            <Button Content="Cours" Command="{Binding SwitchToCoursesPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
-            <Button Content="Geres les sections" Command="{Binding SwitchToSectionsPageCommand}"
+            <Button Content="Sections" Command="{Binding SwitchToSectionsPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
-            <Button Content="Geres les facultées" Command="{Binding SwitchToFacultiesPageCommand}"
+            <Button Content="Facultées" Command="{Binding SwitchToFacultiesPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
         </StackPanel>
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                      Width="2" />
     </Grid>
 </Page>
