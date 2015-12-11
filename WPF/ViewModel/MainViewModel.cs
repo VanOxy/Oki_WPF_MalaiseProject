@@ -17,9 +17,18 @@ namespace WPF.ViewModel
             AskWebServiceCommand = new RelayCommand(AskWebService);
         }
 
-        public ICommand IncrementCounterCommand { get; private set; }
+        #region Navigation
+
         public ICommand ChangeToSecondPageCommand { get; private set; }
 
+        private void ChangeToSecondPage()
+        {
+            Messenger.Default.Send(new ChangePageMessage("second"));
+        }
+
+        #endregion Navigation
+
+        public ICommand IncrementCounterCommand { get; private set; }
         public ICommand AskWebServiceCommand { get; private set; }
 
         private int counter = 0;
@@ -73,11 +82,6 @@ namespace WPF.ViewModel
         {
             counter++;
             MyString = counter.ToString();
-        }
-
-        private void ChangeToSecondPage()
-        {
-            Messenger.Default.Send(new ChangePageMessage("second"));
         }
 
         private async void AskWebService()

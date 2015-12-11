@@ -11,5 +11,19 @@
         Icon="src/img/icon.png"
         DataContext="{Binding Source={StaticResource Locator}, Path=Selector}">
 
-    <Frame Content="{Binding ActiveView}" NavigationUIVisibility="Hidden" />
+    <StackPanel>
+        <Label Content="Univercity Manager" HorizontalAlignment="Right" Margin="20 0"
+               FontSize="34" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF177CC1" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.934" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+
+        <Frame Content="{Binding ActiveView}" NavigationUIVisibility="Hidden" />
+    </StackPanel>
 </Window>
