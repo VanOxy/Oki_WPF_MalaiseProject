@@ -29,6 +29,7 @@
             <Button Content="Facultées" Command="{Binding SwitchToFacultiesPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
         </StackPanel>
+
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                       Width="2" />
     </Grid>
