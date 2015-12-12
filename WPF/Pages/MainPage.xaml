@@ -12,12 +12,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Label Content="Label à remplir à la demande du client"></Label>
+        <StackPanel Grid.Column="0" Width="205">
+            <Label Content="Choose what you want to manage :" />
+            <Label Content=" "></Label>
             <Button Content="Etudiants" Command="{Binding SwitchToStudentsPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
             <Button Content="Professeurs" Command="{Binding SwitchToProfessorsPageCommand}"
@@ -31,6 +32,6 @@
         </StackPanel>
 
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                      Width="2" />
+                      Width="2" IsEnabled="False" />
     </Grid>
 </Page>

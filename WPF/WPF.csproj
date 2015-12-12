@@ -113,6 +113,10 @@
     <Compile Include="ViewModel\SelectorViewModel.cs" />
     <Compile Include="ViewModel\StudentsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Assets\Examples.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\WindowTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
