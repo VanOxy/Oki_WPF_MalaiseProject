@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
         Title="Univercity Manager"
-        MinHeight="450" MinWidth="700" Width="1100" Height="500"
+        MinHeight="450" MinWidth="700" Width="1200" Height="600"
         WindowStartupLocation="CenterScreen"
         Icon="src/img/icon.png"
         DataContext="{Binding Source={StaticResource Locator}, Path=Selector}"
