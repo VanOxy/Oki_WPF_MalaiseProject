@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace WPF.ViewModel
         public string Name { get; set; }
     }
 
-    public class StudentsViewModel
+    public class StudentsViewModel : ViewModelBase
     {
         public StudentsViewModel()
         {
@@ -29,6 +30,8 @@ namespace WPF.ViewModel
 
             // test
             FillCollection();
+
+            FillUserPropertiesCollection(Collection.First());
         }
 
         #region Commands
@@ -42,6 +45,24 @@ namespace WPF.ViewModel
         #region Data
 
         public ObservableCollection<User> Collection { get; set; }
+        public ObservableCollection<string> UserProperties { get; set; }
+
+        private string _searchTextbox = "";
+
+        public string SearchTextbox
+        {
+            get { return _searchTextbox; }
+            set
+            {
+                if (value != _searchTextbox)
+                {
+                    _searchTextbox = value;
+                    RaisePropertyChanged("SearchTextbox");
+
+                    PerformResearch();
+                }
+            }
+        }
 
         #endregion Data
 
@@ -80,6 +101,29 @@ namespace WPF.ViewModel
         }
 
         #endregion CRUD
+
+        #region Search
+
+        /// <summary>
+        /// Remplit la collection UserProperties avec les noms des proprietes du type User.
+        /// Pour en suite binder cette liste au checkbox assicié à la recherche dans DataGrid.
+        /// </summary>
+        private void FillUserPropertiesCollection(object obj)
+        {
+            UserProperties = new ObservableCollection<string>();
+
+            obj.GetType().GetProperties().ToList().ForEach(property =>
+            {
+                UserProperties.Add(property.Name);
+            });
+        }
+
+        private void PerformResearch()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion Search
 
         #region Navigation
 
