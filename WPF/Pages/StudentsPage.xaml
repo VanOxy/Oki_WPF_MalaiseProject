@@ -10,42 +10,47 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Students}">
 
     <Page.Resources>
-        <ResourceDictionary Source="/src/styles/Placeholder.xaml" />
+        <ResourceDictionary Source="/src/styles/Styles.xaml" />
     </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="20" />
             <ColumnDefinition />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Width="205">
-            <Label Content="Etudiants" Margin="5" FontFamily="Segoe Script"
-                   Foreground="#FF177CC1" FontSize="16" FontWeight="Bold" />
-            <Button Content="Ajouter" Margin="5" Padding="5" HorizontalAlignment="Stretch"
-                    Command="{Binding AddStudentCommand}"
-                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
-            <Button Content="Modifier" Margin="5" Padding="5" HorizontalAlignment="Stretch"
-                    Command="{Binding }"
-                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
-            <Button Content="Supprimer" Margin="5" Padding="5" HorizontalAlignment="Stretch"
-                    Command="{Binding RemoveStudentCommand}"
-                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
-            <Label Content=" " />
-            <Label Content="Chercher" Margin="5" />
+        <WrapPanel Grid.Row="0">
+            <Label Content="Etudiants" Style="{StaticResource label}" />
             <TextBox Style="{StaticResource placeholder}" Tag="Write here..."
                  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5" />
-        </StackPanel>
+        </WrapPanel>
 
-        <Button  Grid.Column="0" Content="Retour" Margin="5" VerticalAlignment="Bottom"
+        <Button  Grid.Column="2" Grid.Row="2" Content="Retour" Margin="5" VerticalAlignment="Bottom"
                  Command="{Binding ChangeToMainPageCommand}" />
+
+        <DataGrid x:Name="StudentsDatagrid" ItemsSource="{Binding Collection, Mode=TwoWay}"
+                  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5" IsReadOnly="True" />
 
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                       Width="2" IsEnabled="False" />
 
-        <DataGrid x:Name="StudentsDatagrid" ItemsSource="{Binding Collection, Mode=TwoWay}"
-                  Grid.Column="2" Margin="5" IsReadOnly="True" />
+        <StackPanel Grid.Column="2" Grid.RowSpan="2" Width="205">
+            <Button Content="Ajouter" Margin="5" Padding="5" HorizontalAlignment="Stretch"
+                    Command="{Binding AddStudentCommand}"
+                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
+            <Button Content="Modifier" Margin="5" Padding="5" HorizontalAlignment="Stretch"
+                    Command="{Binding ModifyStudentCommand}"
+                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
+            <Button Content="Supprimer" Margin="5" Padding="5" HorizontalAlignment="Stretch"
+                    Command="{Binding RemoveStudentCommand}"
+                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
+        </StackPanel>
 
         <!--<DataGrid Grid.Column="2" Margin="5" ItemsSource="{Binding Collection}"
                   AutoGenerateColumns="False" IsReadOnly="True">

@@ -23,21 +23,19 @@ namespace WPF.ViewModel
         {
             // assign commands
             ChangeToMainPageCommand = new RelayCommand(ChangeToMainPage);
-            AddStudentCommand = new RelayCommand<User>(AddUser);
+            AddStudentCommand = new RelayCommand<User>(AddStudent);
+            RemoveStudentCommand = new RelayCommand<User>(DeleteStudent);
+            ModifyStudentCommand = new RelayCommand<User>(ModifyStudent);
 
             // test
             FillCollection();
         }
 
-        private void AddUser(User user)
-        {
-            if (user != null)
-                Collection.Remove(user);
-        }
-
         #region Commands
 
         public RelayCommand<User> AddStudentCommand { get; set; }
+        public RelayCommand<User> RemoveStudentCommand { get; set; }
+        public RelayCommand<User> ModifyStudentCommand { get; set; }
 
         #endregion Commands
 
@@ -47,7 +45,23 @@ namespace WPF.ViewModel
 
         #endregion Data
 
-        #region Methods
+        #region CRUD
+
+        private void AddStudent(User std)
+        {
+            if (std != null)
+                throw new NotImplementedException();
+        }
+
+        private void ModifyStudent(User std)
+        {
+        }
+
+        private void DeleteStudent(User std)
+        {
+            if (std != null)
+                Collection.Remove(std);
+        }
 
         /// <summary>
         /// Test purposes --> delete at the end !!!!! ************************************
@@ -65,7 +79,7 @@ namespace WPF.ViewModel
             }
         }
 
-        #endregion Methods
+        #endregion CRUD
 
         #region Navigation
 

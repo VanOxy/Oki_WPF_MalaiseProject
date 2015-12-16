@@ -10,7 +10,7 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Sections}">
 
     <Page.Resources>
-        <ResourceDictionary Source="/src/styles/Placeholder.xaml" />
+        <ResourceDictionary Source="/src/styles/Styles.xaml" />
     </Page.Resources>
 
     <Grid>

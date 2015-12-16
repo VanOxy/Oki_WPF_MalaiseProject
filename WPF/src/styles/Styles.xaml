@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- to add into your page style -->
-    <!--<ResourceDictionary Source="/src/styles/Placeholder.xaml" />-->
+    <!--<ResourceDictionary Source="/src/styles/Styles.xaml" />-->
 
     <!-- Style pour placeholder dans la TextBox -->
     <Style x:Key="placeholder"
@@ -34,5 +34,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="label" TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Margin" Value="5 -30 5 5" />
+        <Setter Property="FontFamily" Value="Segoe Script" />
+        <Setter Property="Foreground" Value="#FF177CC1" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Bold" />
     </Style>
 </ResourceDictionary>
