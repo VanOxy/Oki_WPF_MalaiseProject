@@ -10,50 +10,38 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Students}">
 
     <Page.Resources>
-        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Grid>
-                            <TextBox Text="{Binding Path=Text,
-                                                RelativeSource={RelativeSource TemplatedParent},
-                                                Mode=TwoWay,
-                                                UpdateSourceTrigger=PropertyChanged}"
-                                 x:Name="textSource"
-                                 Background="Transparent"
-                                 Panel.ZIndex="2" />
-                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
-                                <TextBox.Style>
-                                    <Style TargetType="{x:Type TextBox}">
-                                        <Setter Property="Foreground" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                                <Setter Property="Foreground" Value="LightGray" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <!-- Style pour placeholder dans TextBox -->
+        <ResourceDictionary Source="/src/styles/Placeholder.xaml" />
     </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
-            <Label Content="Second Page" FontSize="34" />
-            <Label Height="45" />
-            <TextBox Style="{StaticResource placeHolder}" Tag="John - ta mère!!! What da fuck!!"
-                 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Width="250" />
-            <Label Height="45" />
-            <Button Content="Go to MainPage" Command="{Binding ChangeToMainPageCommand}" />
+        <StackPanel Grid.Column="0" Width="205">
+            <Label Content="Etudiants" Margin="5" FontFamily="Segoe Script" Foreground="#FF177CC1" FontSize="16" FontWeight="Bold" />
+            <Button Content="Ajouter" Command="{Binding }"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Modifier" Command="{Binding }"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Supprimer" Command="{Binding }"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Label Content=" " />
+            <Label Content="Chercher" Margin="5" />
+            <TextBox Style="{StaticResource placeholder}" Tag="Write here..."
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5" />
+        </StackPanel>
+
+        <Button  Grid.Column="0" Content="Go to MainPage" Margin="5" VerticalAlignment="Bottom"
+                 Command="{Binding ChangeToMainPageCommand}" />
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                      Width="2" IsEnabled="False" />
+
+        <StackPanel Grid.Column="2">
         </StackPanel>
     </Grid>
 </Page>

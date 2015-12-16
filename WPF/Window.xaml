@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="Univercity Manager" HorizontalAlignment="Right" Margin="20 0" Grid.Row="0"
-               FontSize="34" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF177CC1" RenderTransformOrigin="0.5,0.5">
+               FontSize="34" FontFamily="Segoe Script" Foreground="#FF177CC1" RenderTransformOrigin="0.5,0.5" FontWeight="Bold">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
