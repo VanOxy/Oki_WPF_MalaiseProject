@@ -9,7 +9,39 @@
       Title="FacultiesPage"
       DataContext="{Binding Source={StaticResource Locator}, Path=Faculties}">
 
+    <Page.Resources>
+        <ResourceDictionary Source="/src/styles/Placeholder.xaml" />
+    </Page.Resources>
+
     <Grid>
-        <Button Content="Go to MainPage" Command="{Binding ChangeToMainPageCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Width="205">
+            <Label Content="Facultées" Margin="5" FontFamily="Segoe Script"
+                   Foreground="#FF177CC1" FontSize="16" FontWeight="Bold" />
+            <Button Content="Ajouter" Command="{Binding }"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Modifier" Command="{Binding }"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Button Content="Supprimer" Command="{Binding }"
+                    Margin="5" Padding="5" HorizontalAlignment="Stretch" />
+            <Label Content=" " />
+            <Label Content="Chercher" Margin="5" />
+            <TextBox Style="{StaticResource placeholder}" Tag="Write here..."
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5" />
+        </StackPanel>
+
+        <Button  Grid.Column="0" Content="Retour" Margin="5" VerticalAlignment="Bottom"
+                 Command="{Binding ChangeToMainPageCommand}" />
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                      Width="2" IsEnabled="False" />
+
+        <StackPanel Grid.Column="2">
+        </StackPanel>
     </Grid>
 </Page>

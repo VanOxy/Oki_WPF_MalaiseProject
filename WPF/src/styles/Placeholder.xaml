@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!-- to add into your page style -->
+    <!--<ResourceDictionary Source="/src/styles/Placeholder.xaml" />-->
+
     <!-- Style pour placeholder dans la TextBox -->
     <Style x:Key="placeholder"
            TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">

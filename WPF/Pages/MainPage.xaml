@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Width="205">
-            <Label Content="Choose what you want to manage :" />
+            <Label Content="Choose what you want to manage :" Margin="5" />
             <Label Content=" "></Label>
             <Button Content="Etudiants" Command="{Binding SwitchToStudentsPageCommand}"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />

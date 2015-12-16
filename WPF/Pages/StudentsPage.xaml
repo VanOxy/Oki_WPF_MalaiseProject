@@ -10,7 +10,6 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Students}">
 
     <Page.Resources>
-        <!-- Style pour placeholder dans TextBox -->
         <ResourceDictionary Source="/src/styles/Placeholder.xaml" />
     </Page.Resources>
 
@@ -22,7 +21,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Width="205">
-            <Label Content="Etudiants" Margin="5" FontFamily="Segoe Script" Foreground="#FF177CC1" FontSize="16" FontWeight="Bold" />
+            <Label Content="Etudiants" Margin="5" FontFamily="Segoe Script"
+                   Foreground="#FF177CC1" FontSize="16" FontWeight="Bold" />
             <Button Content="Ajouter" Command="{Binding }"
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
             <Button Content="Modifier" Command="{Binding }"
@@ -35,7 +35,7 @@
                  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5" />
         </StackPanel>
 
-        <Button  Grid.Column="0" Content="Go to MainPage" Margin="5" VerticalAlignment="Bottom"
+        <Button  Grid.Column="0" Content="Retour" Margin="5" VerticalAlignment="Bottom"
                  Command="{Binding ChangeToMainPageCommand}" />
 
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
