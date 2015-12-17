@@ -14,10 +14,20 @@ using WPF.Messages;
 
 namespace WPF.ViewModel
 {
+    public enum Sex
+    {
+        Man,
+        Women
+    }
+
     public class User
     {
-        public int Age { get; set; }
+        public int StudentId { get; set; }
         public string Name { get; set; }
+        public int Age { get; set; }
+        public Sex Sex { get; set; }
+        public DateTime EnrollmentDate { get; set; }
+        public int CurrentsClass { get; set; }
     }
 
     public class StudentsViewModel : ViewModelBase

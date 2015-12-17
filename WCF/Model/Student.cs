@@ -7,6 +7,7 @@ namespace WCF.Model
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
+        public string Surame { get; set; }
         public int Age { get; set; }
         public Sex Sex { get; set; }
         public DateTime EnrollmentDate { get; set; }

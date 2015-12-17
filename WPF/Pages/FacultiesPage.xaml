@@ -31,7 +31,7 @@
                     Margin="5" Padding="5" HorizontalAlignment="Stretch" />
             <Label Content=" " />
             <Label Content="Chercher" Margin="5" />
-            <TextBox Style="{StaticResource placeholder}" Tag="Write here..."
+            <TextBox Style="{StaticResource TextboxWithPlaceholder}" Tag="Write here..."
                  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5" />
         </StackPanel>
 

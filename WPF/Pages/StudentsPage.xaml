@@ -47,40 +47,6 @@
 
         <DataGrid x:Name="StudentsDatagrid" ItemsSource="{Binding DynamicCollection, Mode=TwoWay}"
                   Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5" IsReadOnly="True" />
-
-        <!-- Invisible grid -->
-        <Grid Grid.Row="1" Focusable="False">
-            <mui:ModernProgressRing x:Name="ProgressRing" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" />
-        </Grid>
-
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                      Width="2" IsEnabled="False" Grid.RowSpan="3" />
-
-        <Grid Grid.Column="2" Grid.RowSpan="2" Width="400">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <Button Content="Ajouter" Margin="5" Padding="5"
-                    Command="{Binding AddStudentCommand}"
-                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
-            <Button Content="Modifier" Margin="5" Padding="5"
-                    Command="{Binding ModifyStudentCommand}"
-                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
-            <Button Content="Supprimer" Margin="5" Padding="5"
-                    Command="{Binding RemoveStudentCommand}"
-                    CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}" />
-        </Grid>
-
         <!--<DataGrid Grid.Column="2" Margin="5" ItemsSource="{Binding Collection}"
                   AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
@@ -88,5 +54,141 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
             </DataGrid.Columns>
         </DataGrid>-->
+
+        <!-- Invisible grid to fix Progress ring-->
+        <Grid Grid.Row="1" Focusable="False">
+            <mui:ModernProgressRing x:Name="ProgressRing" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" />
+        </Grid>
+
+        <!-- **************************************************** Splitter ************************************************************************** -->
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                      Width="2" IsEnabled="False" Grid.RowSpan="3" />
+
+        <!-- ************************************************** RIGHT PART OF SCREEN ******************************************************************* -->
+
+        <!-- ***************** UP SIDE ********************* -->
+        <Grid Grid.Column="2" Grid.RowSpan="2" Width="400">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Margin" Value="0 5 0 0" />
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Label Content="Nom" />
+                    <TextBox Text="dgg" />
+                    <Label Content="Prenom" />
+                    <TextBox Text="dgg" />
+                    <Label Content="Age" />
+                    <TextBox Text="dgg" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Margin" Value="0 5 0 0" />
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Label Content="Année" />
+                    <TextBox Text="" />
+                    <Label Content="Date d'éntrée" />
+                    <DatePicker />
+                    <Label Content="Sex" />
+                    <ComboBox />
+                </StackPanel>
+
+                <Button Content="Ajouter un étudiant" Margin="5" Padding="5" Grid.ColumnSpan="2"
+                        Command="{Binding AddStudentCommand}"
+                        CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+            </Grid>
+
+            <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="2" IsEnabled="False" />
+
+            <!-- ************************************************************************************** -->
+            <!-- ***************** BOTTOM SIDE ********************* -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Margin" Value="0 5 0 0" />
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Label Content="Nom" />
+                    <TextBox Text="dgg" />
+                    <Label Content="Prenom" />
+                    <TextBox Text="dgg" />
+                    <Label Content="Age" />
+                    <TextBox Text="dgg" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Margin" Value="0 5 0 0" />
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Margin" Value="5 0 5 0" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Label Content="Année" />
+                    <TextBox Text="" />
+                    <Label Content="Date d'éntrée" />
+                    <DatePicker />
+                    <Label Content="Sex" />
+                    <ComboBox />
+                </StackPanel>
+
+                <Button Content="Modifier" Margin="5" Padding="5"
+                            Command="{Binding ModifyStudentCommand}"
+                            CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                <Button Content="Supprimer" Margin="5" Padding="5" Grid.Column="1"
+                            Command="{Binding RemoveStudentCommand}"
+                            CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
