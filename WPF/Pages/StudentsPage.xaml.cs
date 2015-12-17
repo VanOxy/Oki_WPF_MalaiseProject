@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.Messages;
 
 namespace WPF.Pages
 {
-    /// <summary>
-    /// Interaction logic for StudentsPage.xaml
-    /// </summary>
     public partial class StudentsPage : Page
     {
         public StudentsPage()
         {
             InitializeComponent();
+            Messenger.Default.Register<ProgressRingMessage>(this, ModifyProgressRingState);
+        }
+
+        private void ModifyProgressRingState(ProgressRingMessage state)
+        {
+            App.Current.Dispatcher.Invoke((Action)(() =>
+            {
+                if (state.Active)
+                    ProgressRing.IsActive = true;
+                else
+                    ProgressRing.IsActive = false;
+            }));
         }
     }
 }

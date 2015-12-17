@@ -5,12 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Threading;
 using WPF.Message;
+using WPF.Messages;
 
 namespace WPF.ViewModel
 {
@@ -95,8 +95,9 @@ namespace WPF.ViewModel
 
         #region Search
 
-        private bool _timeOut = true;
         private int _counter = 2;
+        private bool _timeOut = true;
+
         private string _searchTextbox = "";
 
         public string SearchTextbox
@@ -138,6 +139,7 @@ namespace WPF.ViewModel
                 if (_timeOut)
                 {
                     _timeOut = false;
+                    Messenger.Default.Send(new ProgressRingMessage(true));
 
                     while (!_timeOut)
                     {
@@ -150,6 +152,7 @@ namespace WPF.ViewModel
                         {
                             SearchAndFillDynamicCollection();
                             _timeOut = true;
+                            Messenger.Default.Send(new ProgressRingMessage(false));
                         }
                     }
                 }
@@ -180,8 +183,11 @@ namespace WPF.ViewModel
                     DynamicCollection.Clear();
                 }));
 
+                var userEntry = _searchTextbox;
+                var criteria = _searchCriteria;
+
                 var query = from u in UsersCollection
-                            where u.Name.Contains(_searchTextbox)
+                            where u.Name.Contains(userEntry)
                             select u;
 
                 var tempList = query.ToList();
@@ -211,7 +217,7 @@ namespace WPF.ViewModel
                 UserProperties.Add(property.Name);
             });
 
-            _searchCriteria = propertiesList.First().Name;
+            _searchCriteria = propertiesList[1].Name;
         }
 
         #endregion Search

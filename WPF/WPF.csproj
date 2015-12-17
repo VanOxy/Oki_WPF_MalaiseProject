@@ -82,6 +82,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Messages\ChangePageMessage.cs" />
+    <Compile Include="Messages\ProgressRingMessage.cs" />
     <Compile Include="Pages\CoursPage.xaml.cs">
       <DependentUpon>CoursPage.xaml</DependentUpon>
     </Compile>

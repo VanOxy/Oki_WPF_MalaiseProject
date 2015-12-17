@@ -4,8 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WPF.Pages"
+      xmlns:mui="http://firstfloorsoftware.com/ModernUI"
       mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="700"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="StudentsPage"
       DataContext="{Binding Source={StaticResource Locator}, Path=Students}">
 
@@ -27,7 +28,7 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
@@ -46,6 +47,11 @@
 
         <DataGrid x:Name="StudentsDatagrid" ItemsSource="{Binding DynamicCollection, Mode=TwoWay}"
                   Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5" IsReadOnly="True" />
+
+        <!-- Invisible grid -->
+        <Grid Grid.Row="1" Focusable="False">
+            <mui:ModernProgressRing x:Name="ProgressRing" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" />
+        </Grid>
 
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                       Width="2" IsEnabled="False" Grid.RowSpan="3" />
