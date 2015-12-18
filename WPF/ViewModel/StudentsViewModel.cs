@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -24,10 +25,47 @@ namespace WPF.ViewModel
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
+        public string Suranme { get; set; }
         public int Age { get; set; }
         public Sex Sex { get; set; }
         public DateTime EnrollmentDate { get; set; }
         public int CurrentsClass { get; set; }
+
+        public string GetValue(string inputPropertyName)
+        {
+            string propertyName = inputPropertyName.ToLower();
+            string propertyValue = "";
+            switch (propertyName)
+            {
+                case "studentid":
+                    propertyValue = StudentId.ToString();
+                    break;
+
+                case "name":
+                    propertyValue = Name.ToString();
+                    break;
+
+                case "age":
+                    propertyValue = Age.ToString();
+                    break;
+
+                case "sex":
+                    propertyValue = Sex.ToString();
+                    break;
+
+                case "enrollmentdate":
+                    propertyValue = EnrollmentDate.ToString();
+                    break;
+
+                case "currentsclass":
+                    propertyValue = CurrentsClass.ToString();
+                    break;
+
+                default:
+                    break;
+            }
+            return propertyValue;
+        }
     }
 
     public class StudentsViewModel : ViewModelBase
@@ -88,12 +126,44 @@ namespace WPF.ViewModel
         /// </summary>
         private void FillCollection()
         {
-            for (int i = 12; i < 50; i++)
+            Random rand = new Random();
+            string str = "abcdifghjklmnoprstuwyxzejqsfkuagvcqlkueazygazrazpoizetubxwkfjhvwcdsqfglzerushdfvsd";
+            int longueur = str.Length;
+            StringBuilder userName = new StringBuilder();
+            StringBuilder userSurname = new StringBuilder();
+            Sex sex;
+
+            for (int i = 1; i < 100; i++)
             {
+                // set userName
+                userName.Clear();
+                for (int j = 0; j < 10; j++)
+                {
+                    userName.Append(str[rand.Next(0, longueur)]);
+                }
+
+                // set userSurname
+                userSurname.Clear();
+                for (int k = 0; k < 10; k++)
+                {
+                    userSurname.Append(str[rand.Next(0, longueur)]);
+                }
+
+                // set Sex
+                if (i % 4 == 0)
+                    sex = Sex.Man;
+                else
+                    sex = Sex.Women;
+
                 UsersCollection.Add(new User()
                 {
-                    Age = i,
-                    Name = "name " + i
+                    StudentId = i + rand.Next(0, 500),
+                    Age = rand.Next(17, 40),
+                    Name = userName.ToString(),
+                    Suranme = userSurname.ToString(),
+                    Sex = sex,
+                    EnrollmentDate = DateTime.Now,
+                    CurrentsClass = rand.Next(1, 5)
                 });
             }
 
@@ -180,6 +250,7 @@ namespace WPF.ViewModel
             {
                 App.Current.Dispatcher.Invoke((Action)(() =>
                 {
+                    DynamicCollection.Clear();
                     foreach (var item in UsersCollection)
                     {
                         DynamicCollection.Add(item);
@@ -193,23 +264,26 @@ namespace WPF.ViewModel
                     DynamicCollection.Clear();
                 }));
 
+                // text entré par user à chrecher
                 var userEntry = _searchTextbox;
+                // par rapport à quoi chercher
                 var criteria = _searchCriteria;
 
-                var query = from u in UsersCollection
-                            where u.Name.Contains(userEntry)
-                            select u;
-
-                var tempList = query.ToList();
+                string value = UsersCollection[0].GetValue(criteria);
 
                 App.Current.Dispatcher.Invoke((Action)(() =>
                 {
-                    foreach (var item in tempList)
+                    foreach (var item in UsersCollection)
                     {
-                        DynamicCollection.Add(item);
+                        if (item.GetValue(criteria).Contains(userEntry))
+                            DynamicCollection.Add(item);
                     }
                 }));
             }
+        }
+
+        private void test<TypeOfValue>(string criteria, TypeOfValue list)
+        {
         }
 
         /// <summary>
