@@ -25,7 +25,7 @@ namespace WPF.ViewModel
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
-        public string Suranme { get; set; }
+        public string Surname { get; set; }
         public int Age { get; set; }
         public Sex Sex { get; set; }
         public DateTime EnrollmentDate { get; set; }
@@ -81,6 +81,7 @@ namespace WPF.ViewModel
             // collections
             DynamicCollection = new ObservableCollection<User>();
             UsersCollection = new ObservableCollection<User>();
+            _selectedUser = new User();
 
             // test
             FillCollection();
@@ -100,6 +101,21 @@ namespace WPF.ViewModel
         public ObservableCollection<User> DynamicCollection { get; set; }
         public ObservableCollection<string> UserProperties { get; set; }
         public ObservableCollection<User> UsersCollection { get; set; }
+
+        private User _selectedUser;
+
+        public User SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                if (_selectedUser != value)
+                {
+                    _selectedUser = value;
+                    RaisePropertyChanged("SelectedUser");
+                }
+            }
+        }
 
         #endregion Data
 
@@ -150,17 +166,17 @@ namespace WPF.ViewModel
                 }
 
                 // set Sex
-                if (i % 4 == 0)
-                    sex = Sex.Man;
-                else
+                if (i % 3 == 0)
                     sex = Sex.Women;
+                else
+                    sex = Sex.Man;
 
                 UsersCollection.Add(new User()
                 {
                     StudentId = i + rand.Next(0, 500),
                     Age = rand.Next(17, 40),
                     Name = userName.ToString(),
-                    Suranme = userSurname.ToString(),
+                    Surname = userSurname.ToString(),
                     Sex = sex,
                     EnrollmentDate = DateTime.Now,
                     CurrentsClass = rand.Next(1, 5)
