@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Helpers\ConnectionString.cs" />
     <Compile Include="DAO\UnivercityContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Faculty.cs" />
     <Compile Include="Model\Section.cs" />

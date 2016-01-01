@@ -4,7 +4,7 @@ namespace WCF.Model
 {
     public class Section
     {
-        public int SectionId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
 
         // foreign

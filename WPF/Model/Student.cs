@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WCF.Model
+namespace WPF.Model
 {
     public class Student
     {
-        public int Id { get; set; }
+        public int StudentId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
         public SexEnum Sex { get; set; }
         public DateTime EnrollmentDate { get; set; }
         public int CurrentsClass { get; set; }
-
-        // foreign keys
-        public virtual ICollection<Course> Courses { get; set; }
-
-        public virtual int SectionId { get; set; }
 
         public string GetValue(string inputPropertyName)
         {
@@ -25,7 +23,7 @@ namespace WCF.Model
             switch (propertyName)
             {
                 case "studentid":
-                    propertyValue = Id.ToString();
+                    propertyValue = StudentId.ToString();
                     break;
 
                 case "name":
@@ -53,11 +51,5 @@ namespace WCF.Model
             }
             return propertyValue;
         }
-    }
-
-    public enum SexEnum
-    {
-        Man,
-        Women
     }
 }

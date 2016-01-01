@@ -7,7 +7,7 @@ namespace WCF.Model
 {
     public class Faculty
     {
-        public int FacultyId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
     }
 }

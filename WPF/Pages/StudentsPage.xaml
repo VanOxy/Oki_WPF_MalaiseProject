@@ -97,11 +97,11 @@
                     </StackPanel.Resources>
 
                     <Label Content="Nom" />
-                    <TextBox Text="{Binding NewUser.Name, Mode=OneWay}" />
+                    <TextBox Text="{Binding NewUser.Name, Mode=OneWay}" x:Name="NewName" />
                     <Label Content="Age" />
-                    <TextBox Text="{Binding NewUser.Age, Mode=OneWay}" />
+                    <TextBox Text="{Binding NewUser.Age, Mode=OneWay}" x:Name="NewAge" />
                     <Label Content="Sex" />
-                    <ComboBox />
+                    <ComboBox ItemsSource="{Binding SexEnumValues}" x:Name="NewSex" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -118,11 +118,11 @@
                     </StackPanel.Resources>
 
                     <Label Content="Prenom" />
-                    <TextBox Text="{Binding NewUser.Surname, Mode=OneWay}" />
+                    <TextBox Text="{Binding NewUser.Surname, Mode=OneWay}" x:Name="NewSurname" />
                     <Label Content="Année d'études" />
-                    <TextBox Text="{Binding NewUser.CurrentsClass}" />
+                    <TextBox Text="{Binding NewUser.CurrentsClass}" x:Name="NewStudiesYear" />
                     <Label Content="Date d'éntrée" />
-                    <DatePicker DisplayDate="{Binding NewUser.EnrollmentDate}" />
+                    <DatePicker DisplayDate="{Binding NewUser.EnrollmentDate}" x:Name="NewEntryDate" />
                 </StackPanel>
 
                 <Button Content="Ajouter un étudiant" Margin="5" Padding="5" Grid.ColumnSpan="2"
@@ -155,11 +155,12 @@
                     </StackPanel.Resources>
 
                     <Label Content="Nom" />
-                    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" />
+                    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" x:Name="ModifiedName" />
                     <Label Content="Age" />
-                    <TextBox Text="{Binding SelectedUser.Age, Mode=OneWay}" />
+                    <TextBox Text="{Binding SelectedUser.Age, Mode=OneWay}" x:Name="ModifiedAge" />
                     <Label Content="Sex" />
-                    <ComboBox ItemsSource="{Binding }" SelectedItem="{Binding SelectedUser.Sex}" />
+                    <ComboBox ItemsSource="{Binding SexEnumValues}" SelectedItem="{Binding SelectedSexEnum, Mode=OneWay}"
+                              x:Name="ModifiedSex" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -176,11 +177,11 @@
                     </StackPanel.Resources>
 
                     <Label Content="Prenom" />
-                    <TextBox Text="{Binding SelectedUser.Surname, Mode=OneWay}" />
+                    <TextBox Text="{Binding SelectedUser.Surname, Mode=OneWay}" x:Name="ModifiedSurname" />
                     <Label Content="Année d'études" />
-                    <TextBox Text="{Binding SelectedUser.CurrentsClass, Mode=OneWay}" />
+                    <TextBox Text="{Binding SelectedUser.CurrentsClass, Mode=OneWay}" x:Name="ModifiedStudiesYear" />
                     <Label Content="Date d'éntrée" />
-                    <DatePicker SelectedDate="{Binding SelectedUser.EnrollmentDate, Mode=OneWay}" />
+                    <DatePicker SelectedDate="{Binding SelectedUser.EnrollmentDate, Mode=OneWay}" x:Name="ModifiedEntryDate" />
                 </StackPanel>
 
                 <Button Content="Modifier" Margin="5" Padding="5"

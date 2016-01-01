@@ -9,80 +9,30 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Threading;
 using WPF.Message;
 using WPF.Messages;
+using WPF.Model;
 
 namespace WPF.ViewModel
 {
-    public enum SexEnum
-    {
-        Man,
-        Women
-    }
-
-    public class User
-    {
-        public int StudentId { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public int Age { get; set; }
-        public SexEnum Sex { get; set; }
-        public DateTime EnrollmentDate { get; set; }
-        public int CurrentsClass { get; set; }
-
-        public string GetValue(string inputPropertyName)
-        {
-            string propertyName = inputPropertyName.ToLower();
-            string propertyValue = "";
-            switch (propertyName)
-            {
-                case "studentid":
-                    propertyValue = StudentId.ToString();
-                    break;
-
-                case "name":
-                    propertyValue = Name.ToString();
-                    break;
-
-                case "age":
-                    propertyValue = Age.ToString();
-                    break;
-
-                case "sex":
-                    propertyValue = Sex.ToString();
-                    break;
-
-                case "enrollmentdate":
-                    propertyValue = EnrollmentDate.ToString();
-                    break;
-
-                case "currentsclass":
-                    propertyValue = CurrentsClass.ToString();
-                    break;
-
-                default:
-                    break;
-            }
-            return propertyValue;
-        }
-    }
-
     public class StudentsViewModel : ViewModelBase
     {
         public StudentsViewModel()
         {
             // assign commands
             ChangeToMainPageCommand = new RelayCommand(ChangeToMainPage);
-            AddStudentCommand = new RelayCommand<User>(AddStudent);
-            RemoveStudentCommand = new RelayCommand<User>(DeleteStudent);
-            ModifyStudentCommand = new RelayCommand<User>(ModifyStudent);
+            AddStudentCommand = new RelayCommand<Student>(AddStudent);
+            RemoveStudentCommand = new RelayCommand<Student>(DeleteStudent);
+            ModifyStudentCommand = new RelayCommand<Student>(ModifyStudent);
+
+            // messages
+            Messenger.Default.Register<StudentStateMessage>(this, ModifyStudent_FromView);
 
             // collections
-            DynamicCollection = new ObservableCollection<User>();
-            UsersCollection = new ObservableCollection<User>();
-            _selectedUser = new User();
-            _newUser = new User();
+            DynamicCollection = new ObservableCollection<Student>();
+            UsersCollection = new ObservableCollection<Student>();
+            _selectedUser = new Student();
+            _newUser = new Student();
 
             // test
             FillCollection();
@@ -91,21 +41,21 @@ namespace WPF.ViewModel
 
         #region Commands
 
-        public RelayCommand<User> AddStudentCommand { get; set; }
-        public RelayCommand<User> RemoveStudentCommand { get; set; }
-        public RelayCommand<User> ModifyStudentCommand { get; set; }
+        public RelayCommand<Student> AddStudentCommand { get; set; }
+        public RelayCommand<Student> RemoveStudentCommand { get; set; }
+        public RelayCommand<Student> ModifyStudentCommand { get; set; }
 
         #endregion Commands
 
-        #region Data
+        #region Data - UI/Bindings
 
-        public ObservableCollection<User> DynamicCollection { get; set; }
+        public ObservableCollection<Student> DynamicCollection { get; set; }
         public ObservableCollection<string> UserProperties { get; set; }
-        public ObservableCollection<User> UsersCollection { get; set; }
+        public ObservableCollection<Student> UsersCollection { get; set; }
 
-        private User _selectedUser;
+        private Student _selectedUser;
 
-        public User SelectedUser
+        public Student SelectedUser
         {
             get { return _selectedUser; }
             set
@@ -113,14 +63,15 @@ namespace WPF.ViewModel
                 if (_selectedUser != value)
                 {
                     _selectedUser = value;
+                    if (value != null) SelectedSexEnum = value.Sex; // SexEnum affectation 4 binding
                     RaisePropertyChanged("SelectedUser");
                 }
             }
         }
 
-        private User _newUser;
+        private Student _newUser;
 
-        public User NewUser
+        public Student NewUser
         {
             get { return _newUser; }
             set
@@ -133,74 +84,55 @@ namespace WPF.ViewModel
             }
         }
 
-        #endregion Data
+        // Sex enumeration management
+        // value is affected in SelectedUser - Setter
+        private SexEnum _selectedSexEnum;
+
+        public SexEnum SelectedSexEnum
+        {
+            get { return _selectedSexEnum; }
+            set
+            {
+                _selectedSexEnum = value;
+                RaisePropertyChanged("SelectedSexEnum");
+            }
+        }
+
+        public IEnumerable<SexEnum> SexEnumValues
+        {
+            get
+            {
+                return Enum.GetValues(typeof(SexEnum)).Cast<SexEnum>();
+            }
+        }
+
+        #endregion Data - UI/Bindings
 
         #region CRUD
 
-        private void AddStudent(User std)
+        private void AddStudent(Student std)
         {
             if (std != null)
                 throw new NotImplementedException();
         }
 
-        private void ModifyStudent(User std)
+        private void ModifyStudent(Student std)
         {
+            if (std != null)
+            {
+                Messenger.Default.Send(new ModifyStudentMessage(std.StudentId));
+            }
         }
 
-        private void DeleteStudent(User std)
+        private void ModifyStudent_FromView(StudentStateMessage obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteStudent(Student std)
         {
             if (std != null)
                 DynamicCollection.Remove(std);
-        }
-
-        /// <summary>
-        /// Test purposes --> delete at the end !!!!! ************************************
-        /// </summary>
-        private void FillCollection()
-        {
-            Random rand = new Random();
-            string str = "abcdifghjklmnoprstuwyxzejqsfkuagvcqlkueazygazrazpoizetubxwkfjhvwcdsqfglzerushdfvsd";
-            int longueur = str.Length;
-            StringBuilder userName = new StringBuilder();
-            StringBuilder userSurname = new StringBuilder();
-            SexEnum sex;
-
-            for (int i = 1; i < 100; i++)
-            {
-                // set userName
-                userName.Clear();
-                for (int j = 0; j < 10; j++)
-                {
-                    userName.Append(str[rand.Next(0, longueur)]);
-                }
-
-                // set userSurname
-                userSurname.Clear();
-                for (int k = 0; k < 10; k++)
-                {
-                    userSurname.Append(str[rand.Next(0, longueur)]);
-                }
-
-                // set Sex
-                if (i % 3 == 0)
-                    sex = SexEnum.Women;
-                else
-                    sex = SexEnum.Man;
-
-                UsersCollection.Add(new User()
-                {
-                    StudentId = i + rand.Next(0, 500),
-                    Age = rand.Next(17, 40),
-                    Name = userName.ToString(),
-                    Surname = userSurname.ToString(),
-                    Sex = sex,
-                    EnrollmentDate = DateTime.Now,
-                    CurrentsClass = rand.Next(1, 5)
-                });
-            }
-
-            foreach (var item in UsersCollection)
-                DynamicCollection.Add(item);
         }
 
         #endregion CRUD
@@ -314,10 +246,6 @@ namespace WPF.ViewModel
             }
         }
 
-        private void test<TypeOfValue>(string criteria, TypeOfValue list)
-        {
-        }
-
         /// <summary>
         /// Remplit la collection UserProperties avec les noms des proprietes du type User.
         /// Pour en suite binder cette liste au checkbox assicié à la recherche dans DataGrid.
@@ -348,5 +276,55 @@ namespace WPF.ViewModel
         }
 
         #endregion Navigation
+
+        /// <summary>
+        /// Test purposes --> delete at the end !!!!! ************************************
+        /// </summary>
+        private void FillCollection()
+        {
+            Random rand = new Random();
+            string str = "abcdifghjklmnoprstuwyxzejqsfkuagvcqlkueazygazrazpoizetubxwkfjhvwcdsqfglzerushdfvsd";
+            int longueur = str.Length;
+            StringBuilder userName = new StringBuilder();
+            StringBuilder userSurname = new StringBuilder();
+            SexEnum sex;
+
+            for (int i = 1; i < 100; i++)
+            {
+                // set userName
+                userName.Clear();
+                for (int j = 0; j < 10; j++)
+                {
+                    userName.Append(str[rand.Next(0, longueur)]);
+                }
+
+                // set userSurname
+                userSurname.Clear();
+                for (int k = 0; k < 10; k++)
+                {
+                    userSurname.Append(str[rand.Next(0, longueur)]);
+                }
+
+                // set Sex
+                if (i % 3 == 0)
+                    sex = SexEnum.Women;
+                else
+                    sex = SexEnum.Man;
+
+                UsersCollection.Add(new Student()
+                {
+                    StudentId = i + rand.Next(0, 500),
+                    Age = rand.Next(17, 40),
+                    Name = userName.ToString(),
+                    Surname = userSurname.ToString(),
+                    Sex = sex,
+                    EnrollmentDate = DateTime.Now,
+                    CurrentsClass = rand.Next(1, 5)
+                });
+            }
+
+            foreach (var item in UsersCollection)
+                DynamicCollection.Add(item);
+        }
     }
 }
