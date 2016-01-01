@@ -3,8 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:WPF.Pages"
       xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+      xmlns:local="clr-namespace:WPF.Pages"
+      xmlns:vm="clr-namespace:WPF.ViewModel"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="1000"
       Title="StudentsPage"
@@ -96,11 +97,11 @@
                     </StackPanel.Resources>
 
                     <Label Content="Nom" />
-                    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" />
-                    <Label Content="Prenom" />
-                    <TextBox Text="{Binding SelectedUser.Surname, Mode=OneWay}" />
+                    <TextBox Text="{Binding NewUser.Name, Mode=OneWay}" />
                     <Label Content="Age" />
-                    <TextBox Text="{Binding SelectedUser.Age, Mode=OneWay}" />
+                    <TextBox Text="{Binding NewUser.Age, Mode=OneWay}" />
+                    <Label Content="Sex" />
+                    <ComboBox />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -116,12 +117,12 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <Label Content="Année" />
-                    <TextBox Text="" />
+                    <Label Content="Prenom" />
+                    <TextBox Text="{Binding NewUser.Surname, Mode=OneWay}" />
+                    <Label Content="Année d'études" />
+                    <TextBox Text="{Binding NewUser.CurrentsClass}" />
                     <Label Content="Date d'éntrée" />
-                    <DatePicker />
-                    <Label Content="Sex" />
-                    <ComboBox />
+                    <DatePicker DisplayDate="{Binding NewUser.EnrollmentDate}" />
                 </StackPanel>
 
                 <Button Content="Ajouter un étudiant" Margin="5" Padding="5" Grid.ColumnSpan="2"
@@ -154,11 +155,11 @@
                     </StackPanel.Resources>
 
                     <Label Content="Nom" />
-                    <TextBox Text="dgg" />
-                    <Label Content="Prenom" />
-                    <TextBox Text="dgg" />
+                    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" />
                     <Label Content="Age" />
-                    <TextBox Text="dgg" />
+                    <TextBox Text="{Binding SelectedUser.Age, Mode=OneWay}" />
+                    <Label Content="Sex" />
+                    <ComboBox ItemsSource="{Binding }" SelectedItem="{Binding SelectedUser.Sex}" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -174,12 +175,12 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <Label Content="Année" />
-                    <TextBox Text="" />
+                    <Label Content="Prenom" />
+                    <TextBox Text="{Binding SelectedUser.Surname, Mode=OneWay}" />
+                    <Label Content="Année d'études" />
+                    <TextBox Text="{Binding SelectedUser.CurrentsClass, Mode=OneWay}" />
                     <Label Content="Date d'éntrée" />
-                    <DatePicker />
-                    <Label Content="Sex" />
-                    <ComboBox />
+                    <DatePicker SelectedDate="{Binding SelectedUser.EnrollmentDate, Mode=OneWay}" />
                 </StackPanel>
 
                 <Button Content="Modifier" Margin="5" Padding="5"

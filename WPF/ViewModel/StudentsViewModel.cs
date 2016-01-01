@@ -15,7 +15,7 @@ using WPF.Messages;
 
 namespace WPF.ViewModel
 {
-    public enum Sex
+    public enum SexEnum
     {
         Man,
         Women
@@ -27,7 +27,7 @@ namespace WPF.ViewModel
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-        public Sex Sex { get; set; }
+        public SexEnum Sex { get; set; }
         public DateTime EnrollmentDate { get; set; }
         public int CurrentsClass { get; set; }
 
@@ -82,6 +82,7 @@ namespace WPF.ViewModel
             DynamicCollection = new ObservableCollection<User>();
             UsersCollection = new ObservableCollection<User>();
             _selectedUser = new User();
+            _newUser = new User();
 
             // test
             FillCollection();
@@ -117,6 +118,21 @@ namespace WPF.ViewModel
             }
         }
 
+        private User _newUser;
+
+        public User NewUser
+        {
+            get { return _newUser; }
+            set
+            {
+                if (_newUser != value)
+                {
+                    _newUser = value;
+                    RaisePropertyChanged("NewUser");
+                }
+            }
+        }
+
         #endregion Data
 
         #region CRUD
@@ -147,7 +163,7 @@ namespace WPF.ViewModel
             int longueur = str.Length;
             StringBuilder userName = new StringBuilder();
             StringBuilder userSurname = new StringBuilder();
-            Sex sex;
+            SexEnum sex;
 
             for (int i = 1; i < 100; i++)
             {
@@ -167,9 +183,9 @@ namespace WPF.ViewModel
 
                 // set Sex
                 if (i % 3 == 0)
-                    sex = Sex.Women;
+                    sex = SexEnum.Women;
                 else
-                    sex = Sex.Man;
+                    sex = SexEnum.Man;
 
                 UsersCollection.Add(new User()
                 {
