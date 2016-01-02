@@ -85,97 +85,199 @@ namespace WCF.Migrations
                     Surname = "Carson",
                     EnrollmentDate = DateTime.Parse("2010-09-01"),
                     Age = 24,
-                    Sex = SexEnum.Man
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 3,
+                    SectionId = 1
                 },
                 new Student
                 {
                     Name = "Meredith",
                     Surname = "Alonso",
-                    EnrollmentDate = DateTime.Parse("2012-09-01")
+                    EnrollmentDate = DateTime.Parse("2012-09-01"),
+                    Age = 22,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 1,
+                    SectionId = 2
                 },
                 new Student
                 {
                     Name = "Arturo",
                     Surname = "Anand",
-                    EnrollmentDate = DateTime.Parse("2013-09-01")
+                    EnrollmentDate = DateTime.Parse("2013-09-01"),
+                    Age = 21,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 1,
+                    SectionId = 3
                 },
                 new Student
                 {
                     Name = "Gytis",
                     Surname = "Barzdukas",
-                    EnrollmentDate = DateTime.Parse("2012-09-01")
+                    EnrollmentDate = DateTime.Parse("2012-09-01"),
+                    Age = 24,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 3,
+                    SectionId = 4
                 },
                 new Student
                 {
                     Name = "Yan",
                     Surname = "Li",
-                    EnrollmentDate = DateTime.Parse("2012-09-01")
+                    EnrollmentDate = DateTime.Parse("2012-09-01"),
+                    Age = 27,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 4,
+                    SectionId = 5
                 },
                 new Student
                 {
                     Name = "Peggy",
                     Surname = "Justice",
-                    EnrollmentDate = DateTime.Parse("2011-09-01")
+                    EnrollmentDate = DateTime.Parse("2011-09-01"),
+                    Age = 25,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 3,
+                    SectionId = 6
                 },
                 new Student
                 {
                     Name = "Laura",
                     Surname = "Norman",
-                    EnrollmentDate = DateTime.Parse("2013-09-01")
+                    EnrollmentDate = DateTime.Parse("2013-09-01"),
+                    Age = 24,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 2,
+                    SectionId = 7
                 },
                 new Student
                 {
                     Name = "Nino",
                     Surname = "Olivetto",
-                    EnrollmentDate = DateTime.Parse("2005-08-11")
+                    EnrollmentDate = DateTime.Parse("2005-08-11"),
+                    Age = 26,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 6,
+                    SectionId = 8
                 },
                 new Student
                 {
                     Name = "Stefan",
                     Surname = "Aelbrecht",
-                    EnrollmentDate = DateTime.Parse("2010-09-01")
+                    EnrollmentDate = DateTime.Parse("2010-09-01"),
+                    Age = 24,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 4,
+                    SectionId = 9
                 },
                 new Student
                 {
                     Name = "Eva",
                     Surname = "Aguirre",
-                    EnrollmentDate = DateTime.Parse("2012-09-01")
+                    EnrollmentDate = DateTime.Parse("2012-09-01"),
+                    Age = 23,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 3,
+                    SectionId = 10
                 },
                 new Student
                 {
                     Name = "Anna",
                     Surname = "Lucia",
-                    EnrollmentDate = DateTime.Parse("2013-09-01")
+                    EnrollmentDate = DateTime.Parse("2013-09-01"),
+                    Age = 25,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 2,
+                    SectionId = 1
                 },
                 new Student
                 {
                     Name = "Iva",
                     Surname = "Fejzaj",
-                    EnrollmentDate = DateTime.Parse("2012-09-01")
+                    EnrollmentDate = DateTime.Parse("2012-09-01"),
+                    Age = 19,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 2,
+                    SectionId = 2
                 },
                 new Student
                 {
                     Name = "Jessica ",
                     Surname = "Fiorelli",
-                    EnrollmentDate = DateTime.Parse("2012-09-01")
+                    EnrollmentDate = DateTime.Parse("2012-09-01"),
+                    Age = 22,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 3,
+                    SectionId = 3
                 },
                 new Student
                 {
                     Name = "Marie",
                     Surname = "Haeverans ",
-                    EnrollmentDate = DateTime.Parse("2011-09-01")
+                    EnrollmentDate = DateTime.Parse("2011-09-01"),
+                    Age = 24,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 3,
+                    SectionId = 4
                 },
                 new Student
                 {
                     Name = "Laura",
                     Surname = "Hijmans",
-                    EnrollmentDate = DateTime.Parse("2013-09-01")
+                    EnrollmentDate = DateTime.Parse("2013-09-01"),
+                    Age = 21,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 4,
+                    SectionId = 5
                 },
                 new Student
                 {
                     Name = "Jana ",
                     Surname = "Intini ",
-                    EnrollmentDate = DateTime.Parse("2005-08-11")
+                    EnrollmentDate = DateTime.Parse("2005-08-11"),
+                    Age = 28,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 5,
+                    SectionId = 6
+                },
+                new Student
+                {
+                    Name = "Erin",
+                    Surname = "Baggoti",
+                    EnrollmentDate = DateTime.Parse("2010-09-10"),
+                    Age = 24,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 4,
+                    SectionId = 7
+                },
+                new Student
+                {
+                    Name = "Pablo",
+                    Surname = "Balan",
+                    EnrollmentDate = DateTime.Parse("2011-09-12"),
+                    Age = 23,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 3,
+                    SectionId = 8
+                },
+                new Student
+                {
+                    Name = "Jennifer",
+                    Surname = "Brea",
+                    EnrollmentDate = DateTime.Parse("2012-09-15"),
+                    Age = 22,
+                    Sex = SexEnum.Women,
+                    CurrentsClass = 2,
+                    SectionId = 9
+                },
+                new Student
+                {
+                    Name = "Jonathan",
+                    Surname = "Bruno",
+                    EnrollmentDate = DateTime.Parse("2013-10-02"),
+                    Age = 21,
+                    Sex = SexEnum.Man,
+                    CurrentsClass = 2,
+                    SectionId = 10
                 }
             );
 
