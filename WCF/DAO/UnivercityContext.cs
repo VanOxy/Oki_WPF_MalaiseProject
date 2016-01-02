@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using WCF.Model;
 
-namespace WCF.Helpers
+namespace WCF.DAO
 {
     public class UnivercityContext : DbContext
     {

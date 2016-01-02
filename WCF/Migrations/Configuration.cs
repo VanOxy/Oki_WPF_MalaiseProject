@@ -5,14 +5,14 @@ namespace WCF.Migrations
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WCF.Helpers.UnivercityContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<WCF.DAO.UnivercityContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(WCF.Helpers.UnivercityContext context)
+        protected override void Seed(WCF.DAO.UnivercityContext context)
         {
             // faculties list
             context.Faculties.AddOrUpdate(f => f.Id,
@@ -22,7 +22,7 @@ namespace WCF.Migrations
             );
 
             // sections list
-            context.Sections.AddOrUpdate(s => s.Id,
+            context.Sections.AddOrUpdate(s => s.Title,
                 new Section { Id = 1, FacultyId = 1, Title = "Physique" },
                 new Section { Id = 2, FacultyId = 1, Title = "Mathématique" },
                 new Section { Id = 3, FacultyId = 1, Title = "Informatique" },
