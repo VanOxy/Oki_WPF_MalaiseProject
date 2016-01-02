@@ -16,7 +16,7 @@ namespace WCF.Helpers
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
-        public DbSet<Section> Orientations { get; set; }
+        public DbSet<Section> Sections { get; set; }
         public DbSet<Course> Courses { get; set; }
     }
 }

@@ -17,8 +17,22 @@ namespace WCF.Migrations
             // faculties list
             context.Faculties.AddOrUpdate(f => f.Id,
                 new Faculty { Title = "Sciences", Id = 1 },
-                new Faculty { Title = "Medecine et Pharmacie", Id = 2 },
+                new Faculty { Title = "Médecine et Pharmacie", Id = 2 },
                 new Faculty { Title = "Economie et Gestion", Id = 3 }
+                );
+
+            // sections list
+            context.Sections.AddOrUpdate(s => s.Id,
+                new Section { Id = 1, FacultyId = 1, Title = "Physique" },
+                new Section { Id = 2, FacultyId = 1, Title = "Mathématique" },
+                new Section { Id = 3, FacultyId = 1, Title = "Informatique" },
+                new Section { Id = 4, FacultyId = 1, Title = "Chimie" },
+                new Section { Id = 5, FacultyId = 2, Title = "Médecine" },
+                new Section { Id = 6, FacultyId = 2, Title = "Sciences Pharmaceutiques" },
+                new Section { Id = 7, FacultyId = 2, Title = "Sciences Biomédicales" },
+                new Section { Id = 8, FacultyId = 3, Title = "Sciences de Gestion" },
+                new Section { Id = 9, FacultyId = 3, Title = "Sciences Economiques" },
+                new Section { Id = 10, FacultyId = 3, Title = "Ingénieur de Gestion" }
                 );
 
             // students list
@@ -136,8 +150,6 @@ namespace WCF.Migrations
             };
             courses.ForEach(s => context.Courses.Add(s));
             context.SaveChanges();
-
-            // sections list
 
             context.SaveChanges();
         }

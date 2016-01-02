@@ -79,6 +79,10 @@
   <ItemGroup>
     <Compile Include="Helpers\ConnectionString.cs" />
     <Compile Include="DAO\UnivercityContext.cs" />
+    <Compile Include="Migrations\201601012338358_InitialCreate.cs" />
+    <Compile Include="Migrations\201601012338358_InitialCreate.Designer.cs">
+      <DependentUpon>201601012338358_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Faculty.cs" />
@@ -103,6 +107,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601012338358_InitialCreate.resx">
+      <DependentUpon>201601012338358_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
