@@ -19,21 +19,63 @@ namespace WCF.Migrations
                 new Faculty { Title = "Sciences", Id = 1 },
                 new Faculty { Title = "Médecine et Pharmacie", Id = 2 },
                 new Faculty { Title = "Economie et Gestion", Id = 3 }
-                );
+            );
 
             // sections list
             context.Sections.AddOrUpdate(s => s.Id,
                 new Section { Id = 1, FacultyId = 1, Title = "Physique" },
                 new Section { Id = 2, FacultyId = 1, Title = "Mathématique" },
                 new Section { Id = 3, FacultyId = 1, Title = "Informatique" },
-                new Section { Id = 4, FacultyId = 1, Title = "Chimie" },
                 new Section { Id = 5, FacultyId = 2, Title = "Médecine" },
                 new Section { Id = 6, FacultyId = 2, Title = "Sciences Pharmaceutiques" },
                 new Section { Id = 7, FacultyId = 2, Title = "Sciences Biomédicales" },
                 new Section { Id = 8, FacultyId = 3, Title = "Sciences de Gestion" },
                 new Section { Id = 9, FacultyId = 3, Title = "Sciences Economiques" },
                 new Section { Id = 10, FacultyId = 3, Title = "Ingénieur de Gestion" }
-                );
+            );
+
+            // courses list
+            context.Courses.AddOrUpdate(c => c.Id,
+                // sections 8/9/10 - economics/etc
+                new Course { Id = 1, Title = "Comptabilité gégérale", Credits = 6, SectionId = 8 },
+                new Course { Id = 2, Title = "Economie politique", Credits = 4, SectionId = 9 },
+                new Course { Id = 3, Title = "Statistiques", Credits = 7, SectionId = 8 },
+                new Course { Id = 4, Title = "Méthodes quantitatives", Credits = 5, SectionId = 9 },
+                new Course { Id = 5, Title = "Sociologie", Credits = 4, SectionId = 8 },
+                new Course { Id = 6, Title = "Informatique", Credits = 4, SectionId = 10 },
+                new Course { Id = 7, Title = "Anglais", Credits = 5, SectionId = 9 },
+                new Course { Id = 8, Title = "Microéconomie", Credits = 4, SectionId = 10 },
+                new Course { Id = 9, Title = "Macroéconomie", Credits = 4, SectionId = 10 },
+                new Course { Id = 10, Title = "Marketing", Credits = 4, SectionId = 8 },
+                new Course { Id = 11, Title = "Management", Credits = 4, SectionId = 8 },
+                new Course { Id = 12, Title = "Finances", Credits = 6, SectionId = 9 },
+                new Course { Id = 13, Title = "Mathématiques Appliquées à la gestion", Credits = 10, SectionId = 10 },
+                // section 2 - math
+                new Course { Id = 14, Title = "Algèbre", Credits = 9, SectionId = 2 },
+                new Course { Id = 15, Title = "Algèbre linèaire et géometrie", Credits = 6, SectionId = 2 },
+                new Course { Id = 16, Title = "Analyse complexe", Credits = 4, SectionId = 2 },
+                new Course { Id = 17, Title = "Probabilités et Statistique", Credits = 3, SectionId = 2 },
+                // section 1 - phys
+                new Course { Id = 18, Title = "Physique générale", Credits = 11, SectionId = 1 },
+                new Course { Id = 19, Title = "Astronomie", Credits = 3, SectionId = 1 },
+                new Course { Id = 20, Title = "Physiqe nucléaire", Credits = 8, SectionId = 1 },
+                new Course { Id = 21, Title = "Thérmodynamique", Credits = 5, SectionId = 1 },
+                // section 3 - info
+                new Course { Id = 22, Title = "Fonctionnement des ordinateurs", Credits = 5, SectionId = 3 },
+                new Course { Id = 23, Title = "Mathématiques élémentaires", Credits = 4, SectionId = 3 },
+                new Course { Id = 24, Title = "Programmation et Algorithmique", Credits = 9, SectionId = 3 },
+                new Course { Id = 25, Title = "Bases de données", Credits = 8, SectionId = 3 },
+                // section 5/6/7 - medecine/pharma/biomed
+                new Course { Id = 26, Title = "Immunologie", Credits = 2, SectionId = 5 },
+                new Course { Id = 27, Title = "Anatomie des membres", Credits = 4, SectionId = 5 },
+                new Course { Id = 28, Title = "Génétique médicale", Credits = 6, SectionId = 5 },
+                new Course { Id = 29, Title = "Chimie générale", Credits = 9, SectionId = 7 },
+                new Course { Id = 30, Title = "Biologie cellulaire", Credits = 3, SectionId = 7 },
+                new Course { Id = 31, Title = "Toxicologie", Credits = 3, SectionId = 7 },
+                new Course { Id = 32, Title = "Chimie organique", Credits = 7, SectionId = 6 },
+                new Course { Id = 33, Title = "Biologie moléculaire", Credits = 5, SectionId = 6 },
+                new Course { Id = 34, Title = "Splanchnologie", Credits = 3, SectionId = 6 }
+            );
 
             // students list
             context.Students.AddOrUpdate(s => s.Id,
@@ -136,20 +178,6 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2005-08-11")
                 }
             );
-
-            // courses list
-            var courses = new List<Course>
-            {
-            new Course{Id=1050,Title="Chemistry",Credits=3,},
-            new Course{Id=4022,Title="Microeconomics",Credits=3,},
-            new Course{Id=4041,Title="Macroeconomics",Credits=3,},
-            new Course{Id=1045,Title="Calculus",Credits=4,},
-            new Course{Id=3141,Title="Trigonometry",Credits=4,},
-            new Course{Id=2021,Title="Composition",Credits=3,},
-            new Course{Id=2042,Title="Literature",Credits=4,}
-            };
-            courses.ForEach(s => context.Courses.Add(s));
-            context.SaveChanges();
 
             context.SaveChanges();
         }
