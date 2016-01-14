@@ -285,88 +285,98 @@ namespace WCF.Migrations
                 }
             );
 
-            context.Teachers.AddOrUpdate(s => s.Id,
-                new Teacher()
-                {
-                    Name = "Kate",
-                    Surname = "Aronowitz",
-                    Age = 42,
-                    Sex = SexEnum.Women,
-                    Grade = GradeEnum.Doctorat
-                },
-                new Teacher()
-                {
-                    Name = "Ethan",
-                    Surname = "Beard",
-                    Age = 32,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Master
-                },
-                new Teacher()
-                {
-                    Name = "David",
-                    Surname = "Fisch",
-                    Age = 38,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Master
-                },
-                new Teacher()
-                {
-                    Name = "Paul",
-                    Surname = "Adams",
-                    Age = 45,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Doctorat
-                },
-                new Teacher()
-                {
-                    Name = "Cat",
-                    Surname = "Lee",
-                    Age = 31,
-                    Sex = SexEnum.Women,
-                    Grade = GradeEnum.Master
-                },
-                new Teacher()
-                {
-                    Name = "Rohit",
-                    Surname = "Dhawan",
-                    Age = 36,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Master
-                },
-                new Teacher()
-                {
-                    Name = "David",
-                    Surname = "Recordon",
-                    Age = 41,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Doctorat
-                },
-                new Teacher()
-                {
-                    Name = "Keith",
-                    Surname = "Adams",
-                    Age = 35,
-                    Sex = SexEnum.Women,
-                    Grade = GradeEnum.Master
-                },
-                new Teacher()
-                {
-                    Name = "Ross",
-                    Surname = "Blake",
-                    Age = 48,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Master
-                },
-                new Teacher()
-                {
-                    Name = "Greg",
-                    Surname = "Hoy",
-                    Age = 53,
-                    Sex = SexEnum.Man,
-                    Grade = GradeEnum.Doctorat
-                }
-            );
+            //context.Teachers.AddOrUpdate(s => s.Id,
+            //    new Teacher()
+            //    {
+            //        Name = "Kate",
+            //        Surname = "Aronowitz",
+            //        Age = 42,
+            //        Email = "kate.aronovitz@unif.com",
+            //        Sex = SexEnum.Women,
+            //        Grade = GradeEnum.Doctorat
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Ethan",
+            //        Surname = "Beard",
+            //        Age = 32,
+            //        Email = "ethan.beard@unif.com",
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Master
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "David",
+            //        Surname = "Fisch",
+            //        Age = 38,
+            //        Email = "david.fish@unif.com",
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Master
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Paul",
+            //        Surname = "Adams",
+            //        Email = "paul.adams@unif.com",
+            //        Age = 45,
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Doctorat
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Cat",
+            //        Surname = "Lee",
+            //        Age = 31,
+            //        Email = "cat.lee@unif.com",
+            //        Sex = SexEnum.Women,
+            //        Grade = GradeEnum.Master
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Rohit",
+            //        Surname = "Dhawan",
+            //        Age = 36,
+            //        Email = "rohit.dhawan@unif.com",
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Master
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "David",
+            //        Surname = "Recordon",
+            //        Age = 41,
+            //        Email = "david.recordon@unif.com",
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Doctorat
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Keith",
+            //        Surname = "Adams",
+            //        Age = 35,
+            //        Email = "keith.adams@unif.com",
+            //        Sex = SexEnum.Women,
+            //        Grade = GradeEnum.Master
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Ross",
+            //        Surname = "Blake",
+            //        Age = 48,
+            //        Email = "ross.blake@unif.com",
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Master
+            //    },
+            //    new Teacher()
+            //    {
+            //        Name = "Greg",
+            //        Surname = "Hoy",
+            //        Age = 53,
+            //        Email = "greg.hoy@unif.com",
+            //        Sex = SexEnum.Man,
+            //        Grade = GradeEnum.Doctorat
+            //    }
+            //);
 
             context.SaveChanges();
         }

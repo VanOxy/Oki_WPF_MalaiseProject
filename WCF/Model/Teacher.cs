@@ -11,6 +11,8 @@ namespace WCF.Model
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public SexEnum Sex { get; set; }
         public GradeEnum Grade { get; set; }
 
