@@ -8,22 +8,20 @@ namespace WPF.ViewModel
 {
     public class SelectorViewModel : ViewModelBase
     {
-        public SelectorViewModel()
-        {
-            _mainPage = new MainPage();
-            ActivePage = _mainPage;
-            Messenger.Default.Register<ChangePageMessage>(this, ChangePage);
-        }
+        private MainPage _mainPage;
+        private StudentsPage _studentsPage;
+        private ProfessorsPage _professorsPage;
+        private CoursPage _coursPage;
+        private SectionsPage _sectionsPage;
+        private FacultiesPage _facultiesPage;
+        private AuthentificationPage _authentificationPage;
 
         // the page which is binded with MainWindow
         private Page _activePage;
 
         public Page ActivePage
         {
-            get
-            {
-                return _activePage;
-            }
+            get { return _activePage; }
             set
             {
                 if (_activePage == value)
@@ -33,12 +31,14 @@ namespace WPF.ViewModel
             }
         }
 
-        private MainPage _mainPage;
-        private StudentsPage _studentsPage;
-        private ProfessorsPage _professorsPage;
-        private CoursPage _coursPage;
-        private SectionsPage _sectionsPage;
-        private FacultiesPage _facultiesPage;
+        public SelectorViewModel()
+        {
+            _authentificationPage = new AuthentificationPage();
+            ActivePage = _authentificationPage;
+            //_mainPage = new MainPage();
+            //ActivePage = _mainPage;
+            Messenger.Default.Register<ChangePageMessage>(this, ChangePage);
+        }
 
         /// <summary>
         /// Method which will change the active page (binded into MainWindow) by the page asked by user.
@@ -49,7 +49,15 @@ namespace WPF.ViewModel
         {
             switch (message.PageName)
             {
+                case "authentification":
+                    if (_authentificationPage == null)
+                        _authentificationPage = new AuthentificationPage();
+                    ActivePage = _authentificationPage;
+                    break;
+
                 case "main":
+                    if (_mainPage == null)
+                        _mainPage = new MainPage();
                     ActivePage = _mainPage;
                     break;
 

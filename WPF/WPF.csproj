@@ -87,6 +87,9 @@
     <Compile Include="Messages\StudentStateMessage.cs" />
     <Compile Include="Model\Enumerations.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Pages\AuthentificationPage.xaml.cs">
+      <DependentUpon>AuthentificationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CoursPage.xaml.cs">
       <DependentUpon>CoursPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Assets\WindowTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AuthentificationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
