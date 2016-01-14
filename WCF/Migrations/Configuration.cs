@@ -12,6 +12,10 @@ namespace WCF.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
+        /// <summary>
+        /// Methodé qui permet remplir la DB avec des dpnnées de test
+        /// </summary>
+        /// <param name="context"></param>
         protected override void Seed(WCF.DAO.UnivercityContext context)
         {
             // faculties list
@@ -278,6 +282,89 @@ namespace WCF.Migrations
                     Sex = SexEnum.Man,
                     CurrentsClass = 2,
                     SectionId = 10
+                }
+            );
+
+            context.Teachers.AddOrUpdate(s => s.Id,
+                new Teacher()
+                {
+                    Name = "Kate",
+                    Surname = "Aronowitz",
+                    Age = 42,
+                    Sex = SexEnum.Women,
+                    Grade = GradeEnum.Doctorat
+                },
+                new Teacher()
+                {
+                    Name = "Ethan",
+                    Surname = "Beard",
+                    Age = 32,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Master
+                },
+                new Teacher()
+                {
+                    Name = "David",
+                    Surname = "Fisch",
+                    Age = 38,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Master
+                },
+                new Teacher()
+                {
+                    Name = "Paul",
+                    Surname = "Adams",
+                    Age = 45,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Doctorat
+                },
+                new Teacher()
+                {
+                    Name = "Cat",
+                    Surname = "Lee",
+                    Age = 31,
+                    Sex = SexEnum.Women,
+                    Grade = GradeEnum.Master
+                },
+                new Teacher()
+                {
+                    Name = "Rohit",
+                    Surname = "Dhawan",
+                    Age = 36,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Master
+                },
+                new Teacher()
+                {
+                    Name = "David",
+                    Surname = "Recordon",
+                    Age = 41,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Doctorat
+                },
+                new Teacher()
+                {
+                    Name = "Keith",
+                    Surname = "Adams",
+                    Age = 35,
+                    Sex = SexEnum.Women,
+                    Grade = GradeEnum.Master
+                },
+                new Teacher()
+                {
+                    Name = "Ross",
+                    Surname = "Blake",
+                    Age = 48,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Master
+                },
+                new Teacher()
+                {
+                    Name = "Greg",
+                    Surname = "Hoy",
+                    Age = 53,
+                    Sex = SexEnum.Man,
+                    Grade = GradeEnum.Doctorat
                 }
             );
 

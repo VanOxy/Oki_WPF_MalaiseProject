@@ -10,9 +10,12 @@ namespace WCF.DAO
     {
         private string _connectionString;
 
+        /// <summary>
+        /// Permet d'aller rechercher les données dans le Web.config
+        /// </summary>
         public ConnectionString()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["UnivercityDatabase"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["Univercity"].ConnectionString;
         }
 
         public string GetConnectionString()

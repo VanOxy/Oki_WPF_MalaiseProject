@@ -20,7 +20,7 @@ namespace WPF.ViewModel
             SimpleIoc.Default.Register<FacultiesViewModel>();
         }
 
-        #region Declaring VM's
+        #region Declaring ViewModels
 
         public SelectorViewModel Selector
         {
@@ -57,7 +57,7 @@ namespace WPF.ViewModel
             get { return ServiceLocator.Current.GetInstance<FacultiesViewModel>(); }
         }
 
-        #endregion Declaring VM's
+        #endregion Declaring ViewModels
 
         public static void Cleanup()
         {

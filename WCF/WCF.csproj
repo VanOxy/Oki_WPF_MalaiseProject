@@ -83,6 +83,18 @@
     <Compile Include="Migrations\201601012338358_InitialCreate.Designer.cs">
       <DependentUpon>201601012338358_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601142026206_add-sex-to-teacher.cs" />
+    <Compile Include="Migrations\201601142026206_add-sex-to-teacher.Designer.cs">
+      <DependentUpon>201601142026206_add-sex-to-teacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601142042388_add-grade-enum.cs" />
+    <Compile Include="Migrations\201601142042388_add-grade-enum.Designer.cs">
+      <DependentUpon>201601142042388_add-grade-enum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601142053378_modify-garde-type.cs" />
+    <Compile Include="Migrations\201601142053378_modify-garde-type.Designer.cs">
+      <DependentUpon>201601142053378_modify-garde-type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Faculty.cs" />
@@ -111,6 +123,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601012338358_InitialCreate.resx">
       <DependentUpon>201601012338358_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601142026206_add-sex-to-teacher.resx">
+      <DependentUpon>201601142026206_add-sex-to-teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601142042388_add-grade-enum.resx">
+      <DependentUpon>201601142042388_add-grade-enum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601142053378_modify-garde-type.resx">
+      <DependentUpon>201601142053378_modify-garde-type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
