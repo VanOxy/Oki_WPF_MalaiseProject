@@ -20,6 +20,8 @@ namespace WPF.Pages
 {
     public partial class AuthentificationPage : Page
     {
+        private bool authentificationOk = false;
+
         public AuthentificationPage()
         {
             InitializeComponent();
@@ -32,14 +34,26 @@ namespace WPF.Pages
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            errorMessage.Content = "";
             credentials.IsEnabled = false;
             progressRing.IsActive = true;
             await Task.Run(() =>
             {
+                // check authentification here
                 Thread.Sleep(3000);
+                authentificationOk = true;
             });
-            progressRing.IsActive = false;
-            credentials.IsEnabled = true;
+
+            if (authentificationOk)
+            {
+                Messenger.Default.Send(new ChangePageMessage("main"));
+            }
+            else
+            {
+                progressRing.IsActive = false;
+                credentials.IsEnabled = true;
+                errorMessage.Content = "Wrong credentials";
+            }
         }
     }
 }

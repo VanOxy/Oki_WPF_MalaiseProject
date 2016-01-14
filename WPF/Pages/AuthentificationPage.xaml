@@ -28,6 +28,7 @@
             <TextBox Width="250" Grid.Column="1" Margin="5" />
             <PasswordBox Width="250" Grid.Column="1" Grid.Row="1"  Margin="5" />
 
+            <Label Margin="5" Grid.Row="2" Grid.ColumnSpan="2" x:Name="errorMessage" Foreground="Red" />
             <Button Content="Login" Click="Button_Click" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Margin="5" />
         </Grid>
         <mui:ModernProgressRing x:Name="progressRing" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" Margin="20 -35 0 0" />
