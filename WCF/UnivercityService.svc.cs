@@ -141,7 +141,23 @@ namespace WCF
 
         public CoursesList GetCoursesList()
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                CoursesList list = new CoursesList();
+
+                foreach (var row in db.Courses)
+                {
+                    list.Courses.Add(new Course()
+                    {
+                        Id = row.Id,
+                        Title = row.Title,
+                        Credits = row.Credits,
+                        SectionId = row.SectionId
+                    });
+                }
+
+                return list;
+            }
         }
 
         #endregion Courses
@@ -150,7 +166,21 @@ namespace WCF
 
         public FacultiesList GetFacultiesList()
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                FacultiesList list = new FacultiesList();
+
+                foreach (var row in db.Faculties)
+                {
+                    list.Faculties.Add(new Faculty()
+                    {
+                        Id = row.Id,
+                        Title = row.Title
+                    });
+                }
+
+                return list;
+            }
         }
 
         #endregion Faculties
@@ -159,7 +189,22 @@ namespace WCF
 
         public SectionsList GetSectionsList()
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                SectionsList list = new SectionsList();
+
+                foreach (var row in db.Sections)
+                {
+                    list.Sections.Add(new Section()
+                    {
+                        Id = row.Id,
+                        Title = row.Title,
+                        FacultyId = row.FacultyId
+                    });
+                }
+
+                return list;
+            }
         }
 
         #endregion Sections

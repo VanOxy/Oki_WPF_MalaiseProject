@@ -126,7 +126,7 @@ namespace WCF
         }
 
         [DataMember]
-        public List<Course> Teachers
+        public List<Course> Courses
         {
             get { return _courses; }
             set { _courses = value; }
@@ -145,7 +145,7 @@ namespace WCF
         }
 
         [DataMember]
-        public List<Faculty> Teachers
+        public List<Faculty> Faculties
         {
             get { return _faculties; }
             set { _faculties = value; }
@@ -164,7 +164,7 @@ namespace WCF
         }
 
         [DataMember]
-        public List<Section> Teachers
+        public List<Section> Sections
         {
             get { return _sections; }
             set { _sections = value; }
