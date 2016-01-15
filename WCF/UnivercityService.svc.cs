@@ -12,21 +12,6 @@ namespace WCF
 {
     public class UnivercityService : IUnivercityService
     {
-        public bool TryLogin(string email, string password)
-        {
-            using (var db = new UnivercityContext())
-            {
-                var query = from t in db.Teachers
-                            where t.Email == email && t.Password == password
-                            select t;
-
-                if (query.FirstOrDefault() != null)
-                    return true;
-                else
-                    return false;
-            }
-        }
-
         #region Students
 
         public bool AddStudent(Student student)
@@ -110,6 +95,21 @@ namespace WCF
 
         #region Utilities
 
+        public bool TryLogin(string email, string password)
+        {
+            using (var db = new UnivercityContext())
+            {
+                var query = from t in db.Teachers
+                            where t.Email == email && t.Password == password
+                            select t;
+
+                if (query.FirstOrDefault() != null)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         public int GetStudentsNumber()
         {
             using (var db = new UnivercityContext())
@@ -122,7 +122,7 @@ namespace WCF
         {
             using (var db = new UnivercityContext())
             {
-                return (from s in db.Students select s).Count();
+                return (from s in db.Teachers select s).Count();
             }
         }
 

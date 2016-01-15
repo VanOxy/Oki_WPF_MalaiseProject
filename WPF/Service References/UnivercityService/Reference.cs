@@ -15,67 +15,6 @@ namespace WPF.UnivercityService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WCF")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/WCF.Model")]
     [System.SerializableAttribute()]
     public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -686,18 +625,6 @@ namespace WPF.UnivercityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/TryLogin", ReplyAction="http://tempuri.org/IUnivercityService/TryLoginResponse")]
         System.Threading.Tasks.Task<bool> TryLoginAsync(string email, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetData", ReplyAction="http://tempuri.org/IUnivercityService/GetDataResponse")]
-        string GetData(string value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetData", ReplyAction="http://tempuri.org/IUnivercityService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(string value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUnivercityService/GetDataUsingDataContractResponse")]
-        WPF.UnivercityService.CompositeType GetDataUsingDataContract(WPF.UnivercityService.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUnivercityService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WPF.UnivercityService.CompositeType> GetDataUsingDataContractAsync(WPF.UnivercityService.CompositeType composite);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsList", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsListResponse")]
         bool GetStudentsList();
         
@@ -745,6 +672,36 @@ namespace WPF.UnivercityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetSectionsList", ReplyAction="http://tempuri.org/IUnivercityService/GetSectionsListResponse")]
         System.Threading.Tasks.Task<bool> GetSectionsListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsNumberResponse")]
+        int GetStudentsNumber();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsNumberResponse")]
+        System.Threading.Tasks.Task<int> GetStudentsNumberAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetTeachersNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetTeachersNumberResponse")]
+        int GetTeachersNumber();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetTeachersNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetTeachersNumberResponse")]
+        System.Threading.Tasks.Task<int> GetTeachersNumberAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetCoursesNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetCoursesNumberResponse")]
+        int GetCoursesNumber();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetCoursesNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetCoursesNumberResponse")]
+        System.Threading.Tasks.Task<int> GetCoursesNumberAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetSectionsNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetSectionsNumberResponse")]
+        int GetSectionsNumber();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetSectionsNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetSectionsNumberResponse")]
+        System.Threading.Tasks.Task<int> GetSectionsNumberAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetFacultiesNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetFacultiesNumberResponse")]
+        int GetFacultiesNumber();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetFacultiesNumber", ReplyAction="http://tempuri.org/IUnivercityService/GetFacultiesNumberResponse")]
+        System.Threading.Tasks.Task<int> GetFacultiesNumberAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -780,22 +737,6 @@ namespace WPF.UnivercityService {
         
         public System.Threading.Tasks.Task<bool> TryLoginAsync(string email, string password) {
             return base.Channel.TryLoginAsync(email, password);
-        }
-        
-        public string GetData(string value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetDataAsync(string value) {
-            return base.Channel.GetDataAsync(value);
-        }
-        
-        public WPF.UnivercityService.CompositeType GetDataUsingDataContract(WPF.UnivercityService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<WPF.UnivercityService.CompositeType> GetDataUsingDataContractAsync(WPF.UnivercityService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
         public bool GetStudentsList() {
@@ -860,6 +801,46 @@ namespace WPF.UnivercityService {
         
         public System.Threading.Tasks.Task<bool> GetSectionsListAsync() {
             return base.Channel.GetSectionsListAsync();
+        }
+        
+        public int GetStudentsNumber() {
+            return base.Channel.GetStudentsNumber();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetStudentsNumberAsync() {
+            return base.Channel.GetStudentsNumberAsync();
+        }
+        
+        public int GetTeachersNumber() {
+            return base.Channel.GetTeachersNumber();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetTeachersNumberAsync() {
+            return base.Channel.GetTeachersNumberAsync();
+        }
+        
+        public int GetCoursesNumber() {
+            return base.Channel.GetCoursesNumber();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetCoursesNumberAsync() {
+            return base.Channel.GetCoursesNumberAsync();
+        }
+        
+        public int GetSectionsNumber() {
+            return base.Channel.GetSectionsNumber();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetSectionsNumberAsync() {
+            return base.Channel.GetSectionsNumberAsync();
+        }
+        
+        public int GetFacultiesNumber() {
+            return base.Channel.GetFacultiesNumber();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetFacultiesNumberAsync() {
+            return base.Channel.GetFacultiesNumberAsync();
         }
     }
 }

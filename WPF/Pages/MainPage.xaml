@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mui="http://firstfloorsoftware.com/ModernUI"
       xmlns:local="clr-namespace:WPF.Pages"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="700"
@@ -33,5 +34,33 @@
 
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                       Width="2" IsEnabled="False" />
+
+        <Grid Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Content="Students : " Margin="5" />
+            <Label Content="Teachers : " Grid.Row="1" Margin="5" />
+            <Label Content="Courses : " Grid.Row="2" Margin="5" />
+            <Label Content="Sections: " Grid.Row="3" Margin="5" />
+            <Label Content="Faculties : " Grid.Row="4" Margin="5" />
+
+            <Label Content="{Binding StudentsNumber}" Grid.Column="1" Grid.Row="0" Margin="5" />
+            <Label Content="{Binding TeachersNumber}" Grid.Column="1" Grid.Row="1" Margin="5" />
+            <Label Content="{Binding CoursesNumber}" Grid.Column="1" Grid.Row="2" Margin="5" />
+            <Label Content="{Binding SectionsNumber}" Grid.Column="1" Grid.Row="3" Margin="5" />
+            <Label Content="{Binding FacultiesNumber}" Grid.Column="1" Grid.Row="4" Margin="5" />
+        </Grid>
+
+        <mui:ModernProgressRing x:Name="progressRing" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" Grid.Column="2" />
     </Grid>
 </Page>

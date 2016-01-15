@@ -22,12 +22,11 @@
     <MetadataSource Address="http://localhost:61618/UnivercityService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="UnivercityService.wsdl" MetadataType="Wsdl" ID="bbb7d68b-06d7-44b6-805e-f2764f196492" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?wsdl" />
-    <MetadataFile FileName="UnivercityService.disco" MetadataType="Disco" ID="71638917-bce2-4a64-9275-04ad5c5f0300" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?disco" />
-    <MetadataFile FileName="UnivercityService.xsd" MetadataType="Schema" ID="013f646e-e3fe-452e-9a7b-fddbfc4953ae" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?xsd=xsd0" />
     <MetadataFile FileName="UnivercityService1.xsd" MetadataType="Schema" ID="a12408bf-f6bb-4f5a-af5a-3b27b7c04848" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?xsd=xsd1" />
     <MetadataFile FileName="UnivercityService2.xsd" MetadataType="Schema" ID="28839e98-0f12-4afd-88f1-fd0f325f342b" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?xsd=xsd2" />
-    <MetadataFile FileName="UnivercityService3.xsd" MetadataType="Schema" ID="6ee84938-02a0-4022-8a3d-efe6407738bc" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UnivercityService.disco" MetadataType="Disco" ID="71638917-bce2-4a64-9275-04ad5c5f0300" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?disco" />
+    <MetadataFile FileName="UnivercityService.xsd" MetadataType="Schema" ID="013f646e-e3fe-452e-9a7b-fddbfc4953ae" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UnivercityService.wsdl" MetadataType="Wsdl" ID="bbb7d68b-06d7-44b6-805e-f2764f196492" SourceId="1" SourceUrl="http://localhost:61618/UnivercityService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

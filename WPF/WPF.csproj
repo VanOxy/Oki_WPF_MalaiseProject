@@ -209,12 +209,6 @@
     <None Include="Service References\UnivercityService\UnivercityService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UnivercityService\UnivercityService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UnivercityService\WPF.UnivercityService.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

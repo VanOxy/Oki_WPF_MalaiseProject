@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.Message;
+using WPF.Messages;
 
 namespace WPF.Pages
 {
@@ -26,6 +27,15 @@ namespace WPF.Pages
         public MainPage()
         {
             InitializeComponent();
+            Messenger.Default.Register<ProgressRingMessage>(this, ChangeRingState);
+        }
+
+        private void ChangeRingState(ProgressRingMessage obj)
+        {
+            if (obj.Active == true)
+                progressRing.IsActive = true;
+            else
+                progressRing.IsActive = false;
         }
     }
 }
