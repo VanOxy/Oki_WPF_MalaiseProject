@@ -10,7 +10,7 @@ using WCF.Model;
 
 namespace WCF
 {
-    public class UnivercityService : IService1
+    public class UnivercityService : IUnivercityService
     {
         public string GetData(string value)
         {

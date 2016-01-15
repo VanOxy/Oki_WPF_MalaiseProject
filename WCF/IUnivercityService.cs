@@ -10,7 +10,7 @@ using WCF.Model;
 namespace WCF
 {
     [ServiceContract]
-    public interface IService1
+    public interface IUnivercityService
     {
         [OperationContract]
         string GetData(string value);
@@ -18,11 +18,49 @@ namespace WCF
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
+        #region Students
+
+        [OperationContract]
+        bool GetStudentsList();
+
         [OperationContract]
         bool AddStudent(Student student);
 
         [OperationContract]
-        bool AddTeacher(Teacher prof);
+        bool DeleteStudent(int StudentId);
+
+        [OperationContract]
+        bool ModifyStudent(Student student);
+
+        #endregion Students
+
+        #region Teachers
+
+        [OperationContract]
+        bool GetTeachersList();
+
+        #endregion Teachers
+
+        #region Courses
+
+        [OperationContract]
+        bool GetCoursesList();
+
+        #endregion Courses
+
+        #region Faculties
+
+        [OperationContract]
+        bool GetFacultiesList();
+
+        #endregion Faculties
+
+        #region Sections
+
+        [OperationContract]
+        bool GetSectionsList();
+
+        #endregion Sections
     }
 
     [DataContract]
