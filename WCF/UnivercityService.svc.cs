@@ -14,13 +14,13 @@ namespace WCF
     {
         #region Students
 
-        public bool AddStudent(Student student)
+        public int AddStudent(Student student)
         {
             using (var db = new UnivercityContext())
             {
                 try
                 {
-                    db.Students.Add(new Student()
+                    Student newStudent = new Student()
                     {
                         Name = student.Name,
                         Surname = student.Surname,
@@ -29,13 +29,15 @@ namespace WCF
                         SectionId = student.SectionId,
                         CurrentClass = student.CurrentClass,
                         EnrollmentDate = student.EnrollmentDate
-                    });
+                    };
+                    db.Students.Add(newStudent);
                     db.SaveChanges();
-                    return true;
+
+                    return newStudent.Id;
                 }
                 catch (Exception)
                 {
-                    return false;
+                    return -1;
                 }
             }
         }

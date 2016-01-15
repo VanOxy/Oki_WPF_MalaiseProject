@@ -21,7 +21,7 @@ namespace WCF
         StudentsList GetStudentsList();
 
         [OperationContract]
-        bool AddStudent(Student student);
+        int AddStudent(Student student);
 
         [OperationContract]
         bool DeleteStudent(int StudentId);

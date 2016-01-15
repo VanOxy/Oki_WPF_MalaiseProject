@@ -39,7 +39,7 @@
   <xs:element name="AddStudentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddStudentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AddStudentResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

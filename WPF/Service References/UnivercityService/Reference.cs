@@ -677,10 +677,10 @@ namespace WPF.UnivercityService {
         System.Threading.Tasks.Task<WPF.UnivercityService.StudentsList> GetStudentsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddStudent", ReplyAction="http://tempuri.org/IUnivercityService/AddStudentResponse")]
-        bool AddStudent(WPF.UnivercityService.Student student);
+        int AddStudent(WPF.UnivercityService.Student student);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddStudent", ReplyAction="http://tempuri.org/IUnivercityService/AddStudentResponse")]
-        System.Threading.Tasks.Task<bool> AddStudentAsync(WPF.UnivercityService.Student student);
+        System.Threading.Tasks.Task<int> AddStudentAsync(WPF.UnivercityService.Student student);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/DeleteStudent", ReplyAction="http://tempuri.org/IUnivercityService/DeleteStudentResponse")]
         bool DeleteStudent(int StudentId);
@@ -792,11 +792,11 @@ namespace WPF.UnivercityService {
             return base.Channel.GetStudentsListAsync();
         }
         
-        public bool AddStudent(WPF.UnivercityService.Student student) {
+        public int AddStudent(WPF.UnivercityService.Student student) {
             return base.Channel.AddStudent(student);
         }
         
-        public System.Threading.Tasks.Task<bool> AddStudentAsync(WPF.UnivercityService.Student student) {
+        public System.Threading.Tasks.Task<int> AddStudentAsync(WPF.UnivercityService.Student student) {
             return base.Channel.AddStudentAsync(student);
         }
         

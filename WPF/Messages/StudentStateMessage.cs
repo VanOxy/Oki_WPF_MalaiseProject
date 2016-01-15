@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WPF.Model;
 using WPF.UnivercityService;
 
 namespace WPF.Messages
@@ -16,7 +11,7 @@ namespace WPF.Messages
         public int Age { get; set; }
         public SexEnum Sex { get; set; }
         public DateTime? EnrollmentDate { get; set; }
-        public int CurrentsClass { get; set; }
+        public int CurrentClass { get; set; }
 
         public StudentStateMessage(int id, string name, string surname, int age, SexEnum sex,
                                    DateTime? enrolementDate, int currentClass)
@@ -27,7 +22,7 @@ namespace WPF.Messages
             Age = age;
             Sex = sex;
             EnrollmentDate = enrolementDate;
-            CurrentsClass = currentClass;
+            CurrentClass = currentClass;
         }
     }
 }

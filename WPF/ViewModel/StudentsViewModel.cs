@@ -5,13 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF.Message;
 using WPF.Messages;
-using WPF.Model;
 using WPF.UnivercityService;
 
 namespace WPF.ViewModel
@@ -22,7 +20,7 @@ namespace WPF.ViewModel
         {
             // assign commands
             ChangeToMainPageCommand = new RelayCommand(ChangeToMainPage);
-            AddStudentCommand = new RelayCommand<Student>(AddStudent);
+            AddStudentCommand = new RelayCommand(AddStudent);
             RemoveStudentCommand = new RelayCommand<Student>(DeleteStudent);
             ModifyStudentCommand = new RelayCommand<Student>(ModifyStudent);
 
@@ -33,7 +31,7 @@ namespace WPF.ViewModel
             DynamicCollection = new ObservableCollection<Student>();
             StudentsCollection = new ObservableCollection<Student>();
             _selectedStudent = new Student();
-            _newStudent = new Student();
+            _newStudent = new Student() { EnrollmentDate = DateTime.Today.Date };
 
             GetStudentsFromService();
             FillUserPropertiesCollection(DynamicCollection.First());
@@ -41,7 +39,7 @@ namespace WPF.ViewModel
 
         #region Commands
 
-        public RelayCommand<Student> AddStudentCommand { get; set; }
+        public ICommand AddStudentCommand { get; set; }
         public RelayCommand<Student> RemoveStudentCommand { get; set; }
         public RelayCommand<Student> ModifyStudentCommand { get; set; }
 
@@ -106,6 +104,30 @@ namespace WPF.ViewModel
             }
         }
 
+        private string _newStudentErrorMessage = "";
+
+        public string NewStudentErrorMessage
+        {
+            get { return _newStudentErrorMessage; }
+            set
+            {
+                _newStudentErrorMessage = value;
+                RaisePropertyChanged("NewStudentErrorMessage");
+            }
+        }
+
+        private SexEnum _newSexEnum;
+
+        public SexEnum NewSexEnum
+        {
+            get { return _newSexEnum; }
+            set
+            {
+                _newSexEnum = value;
+                RaisePropertyChanged("NewSexEnum");
+            }
+        }
+
         #endregion Data - UI/Bindings
 
         #region CRUD
@@ -124,10 +146,44 @@ namespace WPF.ViewModel
             }
         }
 
-        private void AddStudent(Student std)
+        private void AddStudent()
         {
-            if (std != null)
-                throw new NotImplementedException();
+            Messenger.Default.Send(new ProgressRingMessage(true));
+            _newStudentErrorMessage = "";
+            if (ValidData())
+            {
+                Student newStd = new Student()
+                {
+                    Name = NewStudent.Name,
+                    Surname = NewStudent.Surname,
+                    Age = NewStudent.Age,
+                    Sex = NewSexEnum,
+                    EnrollmentDate = NewStudent.EnrollmentDate,
+                    CurrentClass = NewStudent.CurrentClass
+                };
+
+                using (var service = new UnivercityServiceClient())
+                {
+                    int id = service.AddStudent(newStd);
+                    if (id > 0)
+                    {
+                        newStd.Id = id;
+                        DynamicCollection.Add(newStd);
+                        ClearNewStudent();
+                    }
+                }
+            }
+            else
+            {
+                NewStudentErrorMessage = "Wrong Data !!!";
+            }
+            Messenger.Default.Send(new ProgressRingMessage(false));
+        }
+
+        private void ClearNewStudent()
+        {
+            NewStudent = null;
+            NewStudent = new Student() { EnrollmentDate = DateTime.Today.Date };
         }
 
         private void ModifyStudent(Student std)
@@ -147,6 +203,25 @@ namespace WPF.ViewModel
         {
             if (std != null)
                 DynamicCollection.Remove(std);
+        }
+
+        /// <summary>
+        /// method which would validate the user entry
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidData()
+        {
+            // remarque... comme on est bindé avec param int, si un string entré ça devient un 0
+            // d'où le check de la validité age > 0
+            int age;
+            int currentClass;
+            bool validAge = Int32.TryParse(NewStudent.Age.ToString(), out age);
+            bool validClass = Int32.TryParse(NewStudent.CurrentClass.ToString(), out currentClass);
+
+            if (currentClass > 0 && currentClass <= 5 && age > 0)
+                return true;
+            else
+                return false;
         }
 
         #endregion CRUD
@@ -218,10 +293,10 @@ namespace WPF.ViewModel
             });
         }
 
-        //// <summary>
-        //// Method which will perform a research based on what user enter into Searchbox
-        //// and what parameter he wants to search.
-        //// </summary>
+        // <summary>
+        // Method which will perform a research based on what user enter into Searchbox
+        // and what parameter he wants to search.
+        // </summary>
 
         //private void SearchAndFillDynamicCollection()
         //{
@@ -230,7 +305,7 @@ namespace WPF.ViewModel
         //        App.Current.Dispatcher.Invoke((Action)(() =>
         //        {
         //            DynamicCollection.Clear();
-        //            foreach (var item in UsersCollection)
+        //            foreach (var item in StudentsCollection)
         //            {
         //                DynamicCollection.Add(item);
         //            }
@@ -269,7 +344,7 @@ namespace WPF.ViewModel
         {
             StudentProperties = new ObservableCollection<string>();
 
-            var propertiesList = obj.GetType().GetProperties().ToList();
+            //var propertiesList = obj.GetType().GetProperties().ToList();
 
             //propertiesList.ForEach(property =>
             //{
@@ -284,7 +359,7 @@ namespace WPF.ViewModel
             StudentProperties.Add("Enrollement Date");
             StudentProperties.Add("Current Class");
 
-            _searchCriteria = propertiesList[1].Name;
+            _searchCriteria = StudentProperties[1];
         }
 
         #endregion Search

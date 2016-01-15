@@ -57,7 +57,7 @@
                 <DataGridTextColumn Header="Surname" Binding="{Binding Surname}" />
                 <DataGridTextColumn Header="Age" Binding="{Binding Age}" />
                 <DataGridTextColumn Header="Sex" Binding="{Binding Sex}" />
-                <DataGridTextColumn Header="Enrollment Date" Binding="{Binding EnrollmentDate}" />
+                <DataGridTextColumn Header="Enrollment Date" Binding="{Binding EnrollmentDate, StringFormat=d}" />
                 <DataGridTextColumn Header="Current Class" Binding="{Binding CurrentClass}" />
             </DataGrid.Columns>
         </DataGrid>
@@ -101,11 +101,13 @@
                     </StackPanel.Resources>
 
                     <Label Content="Nom" />
-                    <TextBox Text="{Binding NewUser.Name, Mode=OneWay}" x:Name="NewName" />
+                    <TextBox Text="{Binding NewStudent.Name}" x:Name="NewName" />
                     <Label Content="Age" />
-                    <TextBox Text="{Binding NewUser.Age, Mode=OneWay}" x:Name="NewAge" />
+                    <TextBox Text="{Binding NewStudent.Age}" x:Name="NewAge" />
                     <Label Content="Sex" />
-                    <ComboBox ItemsSource="{Binding SexEnumValues}" x:Name="NewSex" />
+                    <ComboBox ItemsSource="{Binding SexEnumValues}" SelectedItem="{Binding NewSexEnum}" x:Name="NewSex" />
+
+                    <Label Content="{Binding NewStudentErrorMessage}" Foreground="Red" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -122,16 +124,15 @@
                     </StackPanel.Resources>
 
                     <Label Content="Prenom" />
-                    <TextBox Text="{Binding NewUser.Surname, Mode=OneWay}" x:Name="NewSurname" />
+                    <TextBox Text="{Binding NewStudent.Surname}" x:Name="NewSurname" />
                     <Label Content="Année d'études" />
-                    <TextBox Text="{Binding NewUser.CurrentsClass}" x:Name="NewStudiesYear" />
+                    <TextBox Text="{Binding NewStudent.CurrentClass}" x:Name="NewStudiesYear" />
                     <Label Content="Date d'éntrée" />
-                    <DatePicker DisplayDate="{Binding NewUser.EnrollmentDate}" x:Name="NewEntryDate" />
+                    <DatePicker DisplayDate="{Binding NewStudent.EnrollmentDate}" x:Name="NewEntryDate" />
                 </StackPanel>
 
                 <Button Content="Ajouter un étudiant" Margin="5" Padding="5" Grid.ColumnSpan="2"
                         Command="{Binding AddStudentCommand}"
-                        CommandParameter="{Binding SelectedItem, ElementName=StudentsDatagrid}"
                         HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
             </Grid>
 

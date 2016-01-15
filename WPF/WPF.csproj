@@ -85,8 +85,6 @@
     <Compile Include="Messages\ModifyStudentMessage.cs" />
     <Compile Include="Messages\ProgressRingMessage.cs" />
     <Compile Include="Messages\StudentStateMessage.cs" />
-    <Compile Include="Model\Enumerations.cs" />
-    <Compile Include="Model\Student.cs" />
     <Compile Include="Pages\AuthentificationPage.xaml.cs">
       <DependentUpon>AuthentificationPage.xaml</DependentUpon>
     </Compile>
