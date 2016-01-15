@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using WCF.Model;
 
 namespace WCF
@@ -12,9 +9,6 @@ namespace WCF
     [ServiceContract]
     public interface IUnivercityService
     {
-        [OperationContract]
-        bool TryLogin(string email, string password);
-
         #region Students
 
         [OperationContract]
@@ -34,32 +28,35 @@ namespace WCF
         #region Teachers
 
         [OperationContract]
-        bool GetTeachersList();
+        TeachersList GetTeachersList();
 
         #endregion Teachers
 
         #region Courses
 
         [OperationContract]
-        bool GetCoursesList();
+        CoursesList GetCoursesList();
 
         #endregion Courses
 
         #region Faculties
 
         [OperationContract]
-        bool GetFacultiesList();
+        FacultiesList GetFacultiesList();
 
         #endregion Faculties
 
         #region Sections
 
         [OperationContract]
-        bool GetSectionsList();
+        SectionsList GetSectionsList();
 
         #endregion Sections
 
         #region Utilities
+
+        [OperationContract]
+        bool TryLogin(string email, string password);
 
         [OperationContract]
         int GetStudentsNumber();
@@ -114,6 +111,63 @@ namespace WCF
         {
             get { return _teachers; }
             set { _teachers = value; }
+        }
+    }
+
+    [DataContract]
+    [Serializable]
+    public class CoursesList
+    {
+        private List<Course> _courses;
+
+        public CoursesList()
+        {
+            _courses = new List<Course>();
+        }
+
+        [DataMember]
+        public List<Course> Teachers
+        {
+            get { return _courses; }
+            set { _courses = value; }
+        }
+    }
+
+    [DataContract]
+    [Serializable]
+    public class FacultiesList
+    {
+        private List<Faculty> _faculties;
+
+        public FacultiesList()
+        {
+            _faculties = new List<Faculty>();
+        }
+
+        [DataMember]
+        public List<Faculty> Teachers
+        {
+            get { return _faculties; }
+            set { _faculties = value; }
+        }
+    }
+
+    [DataContract]
+    [Serializable]
+    public class SectionsList
+    {
+        private List<Section> _sections;
+
+        public SectionsList()
+        {
+            _sections = new List<Section>();
+        }
+
+        [DataMember]
+        public List<Section> Teachers
+        {
+            get { return _sections; }
+            set { _sections = value; }
         }
     }
 }

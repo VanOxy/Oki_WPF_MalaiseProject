@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using WCF.DAO;
 using WCF.Model;
 
@@ -77,10 +72,24 @@ namespace WCF
 
                 if (original != null)
                 {
-                    db.Entry(original).CurrentValues.SetValues(std);
+                    original.Name = std.Name;
+                    original.Surname = std.Surname;
+                    original.Age = std.Age;
+                    original.CurrentClass = std.CurrentClass;
+                    original.EnrollmentDate = std.EnrollmentDate;
+                    original.Sex = std.Sex;
                     db.SaveChanges();
-                    return true;
                 }
+
+                // advanced method, but the problems is that i've not managed sectionId
+                // so that it becomes 0 within this method  // todo later --> means UI modif :(
+
+                //if (original != null)
+                //{
+                //    db.Entry(original).CurrentValues.SetValues(std);
+                //    db.SaveChanges();
+                //    return true;
+                //}
 
                 return false;
             }
@@ -102,16 +111,35 @@ namespace WCF
 
         #region Teachers
 
-        public bool GetTeachersList()
+        public TeachersList GetTeachersList()
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                TeachersList list = new TeachersList();
+
+                foreach (var row in db.Teachers)
+                {
+                    list.Teachers.Add(new Teacher()
+                    {
+                        Id = row.Id,
+                        Name = row.Name,
+                        Surname = row.Surname,
+                        Sex = row.Sex,
+                        Age = row.Age,
+                        Grade = row.Grade,
+                        Email = row.Email
+                    });
+                }
+
+                return list;
+            }
         }
 
         #endregion Teachers
 
         #region Courses
 
-        public bool GetCoursesList()
+        public CoursesList GetCoursesList()
         {
             throw new NotImplementedException();
         }
@@ -120,7 +148,7 @@ namespace WCF
 
         #region Faculties
 
-        public bool GetFacultiesList()
+        public FacultiesList GetFacultiesList()
         {
             throw new NotImplementedException();
         }
@@ -129,7 +157,7 @@ namespace WCF
 
         #region Sections
 
-        public bool GetSectionsList()
+        public SectionsList GetSectionsList()
         {
             throw new NotImplementedException();
         }
