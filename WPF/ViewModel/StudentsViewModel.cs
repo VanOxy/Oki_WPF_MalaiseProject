@@ -186,6 +186,10 @@ namespace WPF.ViewModel
             NewStudent = new Student() { EnrollmentDate = DateTime.Today.Date };
         }
 
+        // ici on envoie un message à la StudentPage. Qui va requperer les données
+        // dans les composants associés avec les clefs (pas mvvm, car restrictions des
+        // bindings à cause de la réalisation de binding mutuel entre plusieurs éléments:
+        // datagrid et ceux qui se trouvent dans la zone "modify")
         private void ModifyStudent(Student std)
         {
             if (std != null)
@@ -194,15 +198,52 @@ namespace WPF.ViewModel
             }
         }
 
-        private void ModifyStudent_FromView(StudentStateMessage obj)
+        // ici on reçoi un message de la StudentPage avec les données des champs
+        // à modifier
+        // et c'est ici qu'on va appeler le service
+        private void ModifyStudent_FromView(StudentStateMessage std)
         {
-            throw new NotImplementedException();
+            Messenger.Default.Send(new ProgressRingMessage(true));
+            using (var service = new UnivercityServiceClient())
+            {
+                Student modifiedStudent = new Student()
+                {
+                    Id = std.StudentId,
+                    Name = std.Name,
+                    Surname = std.Surname,
+                    Age = std.Age,
+                    Sex = std.Sex,
+                    CurrentClass = std.CurrentClass,
+                    EnrollmentDate = std.EnrollmentDate.Value
+                };
+
+                bool ok = service.ModifyStudent(modifiedStudent);
+
+                if (ok)
+                {
+                    var item = DynamicCollection.FirstOrDefault(s => s.Id == std.StudentId);
+
+                    if (item != null)
+                        item = modifiedStudent;
+                }
+                else
+                {
+                    NewStudentErrorMessage = "Something went wrong :(";
+                }
+            }
+            Messenger.Default.Send(new ProgressRingMessage(false));
         }
 
         private void DeleteStudent(Student std)
         {
             if (std != null)
+            {
+                using (var service = new UnivercityServiceClient())
+                {
+                    service.DeleteStudent(std.Id);
+                }
                 DynamicCollection.Remove(std);
+            }
         }
 
         /// <summary>

@@ -14,34 +14,6 @@ namespace WCF
     {
         #region Students
 
-        public int AddStudent(Student student)
-        {
-            using (var db = new UnivercityContext())
-            {
-                try
-                {
-                    Student newStudent = new Student()
-                    {
-                        Name = student.Name,
-                        Surname = student.Surname,
-                        Age = student.Age,
-                        Sex = student.Sex,
-                        SectionId = student.SectionId,
-                        CurrentClass = student.CurrentClass,
-                        EnrollmentDate = student.EnrollmentDate
-                    };
-                    db.Students.Add(newStudent);
-                    db.SaveChanges();
-
-                    return newStudent.Id;
-                }
-                catch (Exception)
-                {
-                    return -1;
-                }
-            }
-        }
-
         public StudentsList GetStudentsList()
         {
             using (var db = new UnivercityContext())
@@ -67,14 +39,63 @@ namespace WCF
             }
         }
 
-        public bool DeleteStudent(int StudentId)
+        public int AddStudent(Student student)
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                try
+                {
+                    Student newStudent = new Student()
+                    {
+                        Name = student.Name,
+                        Surname = student.Surname,
+                        Age = student.Age,
+                        Sex = student.Sex,
+                        SectionId = student.SectionId,
+                        CurrentClass = student.CurrentClass,
+                        EnrollmentDate = student.EnrollmentDate
+                    };
+                    db.Students.Add(newStudent);
+                    db.SaveChanges();
+
+                    // while db.saveChanges() newStudent.ID is initialized,
+                    // so we can get it after that.
+                    return newStudent.Id;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
         }
 
-        public bool ModifyStudent(Student student)
+        public bool ModifyStudent(Student std)
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                var original = db.Students.Find(std.Id);
+
+                if (original != null)
+                {
+                    db.Entry(original).CurrentValues.SetValues(std);
+                    db.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        public bool DeleteStudent(int StudentId)
+        {
+            using (var db = new UnivercityContext())
+            {
+                var student = new Student { Id = StudentId };
+                db.Students.Attach(student);
+                db.Students.Remove(student);
+                db.SaveChanges();
+            }
+            return true;
         }
 
         #endregion Students
