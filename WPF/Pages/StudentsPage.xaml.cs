@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.Messages;
 using WPF.Model;
+using WPF.UnivercityService;
 
 namespace WPF.Pages
 {

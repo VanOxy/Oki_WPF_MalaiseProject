@@ -91,7 +91,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2010-09-01"),
                     Age = 24,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 1
                 },
                 new Student
@@ -101,7 +101,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-01"),
                     Age = 22,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 1,
+                    CurrentClass = 1,
                     SectionId = 2
                 },
                 new Student
@@ -111,7 +111,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2013-09-01"),
                     Age = 21,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 1,
+                    CurrentClass = 1,
                     SectionId = 3
                 },
                 new Student
@@ -121,7 +121,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-01"),
                     Age = 24,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 4
                 },
                 new Student
@@ -131,7 +131,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-01"),
                     Age = 27,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 4,
+                    CurrentClass = 4,
                     SectionId = 5
                 },
                 new Student
@@ -141,7 +141,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2011-09-01"),
                     Age = 25,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 6
                 },
                 new Student
@@ -151,7 +151,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2013-09-01"),
                     Age = 24,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 2,
+                    CurrentClass = 2,
                     SectionId = 7
                 },
                 new Student
@@ -161,7 +161,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2005-08-11"),
                     Age = 26,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 6,
+                    CurrentClass = 6,
                     SectionId = 8
                 },
                 new Student
@@ -171,7 +171,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2010-09-01"),
                     Age = 24,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 4,
+                    CurrentClass = 4,
                     SectionId = 9
                 },
                 new Student
@@ -181,7 +181,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-01"),
                     Age = 23,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 10
                 },
                 new Student
@@ -191,7 +191,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2013-09-01"),
                     Age = 25,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 2,
+                    CurrentClass = 2,
                     SectionId = 1
                 },
                 new Student
@@ -201,7 +201,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-01"),
                     Age = 19,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 2,
+                    CurrentClass = 2,
                     SectionId = 2
                 },
                 new Student
@@ -211,7 +211,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-01"),
                     Age = 22,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 3
                 },
                 new Student
@@ -221,7 +221,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2011-09-01"),
                     Age = 24,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 4
                 },
                 new Student
@@ -231,7 +231,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2013-09-01"),
                     Age = 21,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 4,
+                    CurrentClass = 4,
                     SectionId = 5
                 },
                 new Student
@@ -241,7 +241,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2005-08-11"),
                     Age = 28,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 5,
+                    CurrentClass = 5,
                     SectionId = 6
                 },
                 new Student
@@ -251,7 +251,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2010-09-10"),
                     Age = 24,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 4,
+                    CurrentClass = 4,
                     SectionId = 7
                 },
                 new Student
@@ -261,7 +261,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2011-09-12"),
                     Age = 23,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 3,
+                    CurrentClass = 3,
                     SectionId = 8
                 },
                 new Student
@@ -271,7 +271,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2012-09-15"),
                     Age = 22,
                     Sex = SexEnum.Women,
-                    CurrentsClass = 2,
+                    CurrentClass = 2,
                     SectionId = 9
                 },
                 new Student
@@ -281,7 +281,7 @@ namespace WCF.Migrations
                     EnrollmentDate = DateTime.Parse("2013-10-02"),
                     Age = 21,
                     Sex = SexEnum.Man,
-                    CurrentsClass = 2,
+                    CurrentClass = 2,
                     SectionId = 10
                 }
             );

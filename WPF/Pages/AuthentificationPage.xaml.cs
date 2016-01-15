@@ -36,7 +36,7 @@ namespace WPF.Pages
         {
             errorMessage.Content = "";
             credentials.IsEnabled = false;
-            progressRing.IsActive = true;
+            progressRingAuth.IsActive = true;
             bool _authentificationOk = false;
 
             string email = emailTxt.Text;
@@ -50,12 +50,12 @@ namespace WPF.Pages
 
             if (_authentificationOk)
             {
-                progressRing.IsActive = false;
+                progressRingAuth.IsActive = false;
                 Messenger.Default.Send(new ChangePageMessage("main"));
             }
             else
             {
-                progressRing.IsActive = false;
+                progressRingAuth.IsActive = false;
                 credentials.IsEnabled = true;
                 errorMessage.Content = "Wrong credentials";
             }

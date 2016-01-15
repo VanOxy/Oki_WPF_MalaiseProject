@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201601142356248_Initial.Designer.cs">
       <DependentUpon>201601142356248_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601150547534_current-class property in Student model refactored.cs" />
+    <Compile Include="Migrations\201601150547534_current-class property in Student model refactored.Designer.cs">
+      <DependentUpon>201601150547534_current-class property in Student model refactored.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Faculty.cs" />
@@ -111,6 +115,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601142356248_Initial.resx">
       <DependentUpon>201601142356248_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601150547534_current-class property in Student model refactored.resx">
+      <DependentUpon>201601150547534_current-class property in Student model refactored.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

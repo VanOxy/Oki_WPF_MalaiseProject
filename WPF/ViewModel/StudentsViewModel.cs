@@ -12,6 +12,7 @@ using System.Windows.Input;
 using WPF.Message;
 using WPF.Messages;
 using WPF.Model;
+using WPF.UnivercityService;
 
 namespace WPF.ViewModel
 {
@@ -30,12 +31,11 @@ namespace WPF.ViewModel
 
             // collections
             DynamicCollection = new ObservableCollection<Student>();
-            UsersCollection = new ObservableCollection<Student>();
-            _selectedUser = new Student();
-            _newUser = new Student();
+            StudentsCollection = new ObservableCollection<Student>();
+            _selectedStudent = new Student();
+            _newStudent = new Student();
 
-            // test
-            FillCollection();
+            GetStudentsFromService();
             FillUserPropertiesCollection(DynamicCollection.First());
         }
 
@@ -50,36 +50,36 @@ namespace WPF.ViewModel
         #region Data - UI/Bindings
 
         public ObservableCollection<Student> DynamicCollection { get; set; }
-        public ObservableCollection<string> UserProperties { get; set; }
-        public ObservableCollection<Student> UsersCollection { get; set; }
+        public ObservableCollection<string> StudentProperties { get; set; }
+        public ObservableCollection<Student> StudentsCollection { get; set; }
 
-        private Student _selectedUser;
+        private Student _selectedStudent;
 
-        public Student SelectedUser
+        public Student SelectedStudent
         {
-            get { return _selectedUser; }
+            get { return _selectedStudent; }
             set
             {
-                if (_selectedUser != value)
+                if (_selectedStudent != value)
                 {
-                    _selectedUser = value;
+                    _selectedStudent = value;
                     if (value != null) SelectedSexEnum = value.Sex; // SexEnum affectation 4 binding
-                    RaisePropertyChanged("SelectedUser");
+                    RaisePropertyChanged("SelectedStudent");
                 }
             }
         }
 
-        private Student _newUser;
+        private Student _newStudent;
 
-        public Student NewUser
+        public Student NewStudent
         {
-            get { return _newUser; }
+            get { return _newStudent; }
             set
             {
-                if (_newUser != value)
+                if (_newStudent != value)
                 {
-                    _newUser = value;
-                    RaisePropertyChanged("NewUser");
+                    _newStudent = value;
+                    RaisePropertyChanged("NewStudent");
                 }
             }
         }
@@ -110,6 +110,20 @@ namespace WPF.ViewModel
 
         #region CRUD
 
+        private void GetStudentsFromService()
+        {
+            StudentsList studentsList;
+            using (var service = new UnivercityServiceClient())
+            {
+                studentsList = service.GetStudentsList();
+            }
+
+            foreach (var std in studentsList.Students)
+            {
+                DynamicCollection.Add(std);
+            }
+        }
+
         private void AddStudent(Student std)
         {
             if (std != null)
@@ -120,7 +134,7 @@ namespace WPF.ViewModel
         {
             if (std != null)
             {
-                Messenger.Default.Send(new ModifyStudentMessage(std.StudentId));
+                Messenger.Default.Send(new ModifyStudentMessage(std.Id));
             }
         }
 
@@ -189,12 +203,12 @@ namespace WPF.ViewModel
                     {
                         if (_counter != 0)
                         {
-                            Thread.Sleep(750);
+                            Thread.Sleep(350);
                             _counter--;
                         }
                         else
                         {
-                            SearchAndFillDynamicCollection();
+                            //SearchAndFillDynamicCollection();
                             _timeOut = true;
                             Messenger.Default.Send(new ProgressRingMessage(false));
                         }
@@ -204,47 +218,48 @@ namespace WPF.ViewModel
             });
         }
 
-        /// <summary>
-        /// Method which will perform a research based on what user enter into Searchbox
-        /// and what parameter he wants to search.
-        /// </summary>
-        private void SearchAndFillDynamicCollection()
-        {
-            if (_searchTextbox == "")
-            {
-                App.Current.Dispatcher.Invoke((Action)(() =>
-                {
-                    DynamicCollection.Clear();
-                    foreach (var item in UsersCollection)
-                    {
-                        DynamicCollection.Add(item);
-                    }
-                }));
-            }
-            else
-            {
-                App.Current.Dispatcher.Invoke((Action)(() =>
-                {
-                    DynamicCollection.Clear();
-                }));
+        //// <summary>
+        //// Method which will perform a research based on what user enter into Searchbox
+        //// and what parameter he wants to search.
+        //// </summary>
 
-                // text entré par user à chrecher
-                var userEntry = _searchTextbox;
-                // par rapport à quoi chercher
-                var criteria = _searchCriteria;
+        //private void SearchAndFillDynamicCollection()
+        //{
+        //    if (_searchTextbox == "")
+        //    {
+        //        App.Current.Dispatcher.Invoke((Action)(() =>
+        //        {
+        //            DynamicCollection.Clear();
+        //            foreach (var item in UsersCollection)
+        //            {
+        //                DynamicCollection.Add(item);
+        //            }
+        //        }));
+        //    }
+        //    else
+        //    {
+        //        App.Current.Dispatcher.Invoke((Action)(() =>
+        //        {
+        //            DynamicCollection.Clear();
+        //        }));
 
-                string value = UsersCollection[0].GetValue(criteria);
+        //        // text entré par user à chrecher
+        //        var userEntry = _searchTextbox;
+        //        // par rapport à quoi chercher
+        //        var criteria = _searchCriteria;
 
-                App.Current.Dispatcher.Invoke((Action)(() =>
-                {
-                    foreach (var item in UsersCollection)
-                    {
-                        if (item.GetValue(criteria).Contains(userEntry))
-                            DynamicCollection.Add(item);
-                    }
-                }));
-            }
-        }
+        //        //string value = UsersCollection[0].GetValue(criteria);
+
+        //        App.Current.Dispatcher.Invoke((Action)(() =>
+        //        {
+        //            foreach (var item in StudentsCollection)
+        //            {
+        //                if (item.GetValue(criteria).Contains(userEntry))
+        //                    DynamicCollection.Add(item);
+        //            }
+        //        }));
+        //    }
+        //}
 
         /// <summary>
         /// Remplit la collection UserProperties avec les noms des proprietes du type User.
@@ -252,14 +267,22 @@ namespace WPF.ViewModel
         /// </summary>
         private void FillUserPropertiesCollection(object obj)
         {
-            UserProperties = new ObservableCollection<string>();
+            StudentProperties = new ObservableCollection<string>();
 
             var propertiesList = obj.GetType().GetProperties().ToList();
 
-            propertiesList.ForEach(property =>
-            {
-                UserProperties.Add(property.Name);
-            });
+            //propertiesList.ForEach(property =>
+            //{
+            //    StudentProperties.Add(property.Name);
+            //});
+
+            StudentProperties.Add("Id");
+            StudentProperties.Add("Name");
+            StudentProperties.Add("Surname");
+            StudentProperties.Add("Age");
+            StudentProperties.Add("Sex");
+            StudentProperties.Add("Enrollement Date");
+            StudentProperties.Add("Current Class");
 
             _searchCriteria = propertiesList[1].Name;
         }
@@ -276,55 +299,5 @@ namespace WPF.ViewModel
         }
 
         #endregion Navigation
-
-        /// <summary>
-        /// Test purposes --> delete at the end !!!!! ************************************
-        /// </summary>
-        private void FillCollection()
-        {
-            Random rand = new Random();
-            string str = "abcdifghjklmnoprstuwyxzejqsfkuagvcqlkueazygazrazpoizetubxwkfjhvwcdsqfglzerushdfvsd";
-            int longueur = str.Length;
-            StringBuilder userName = new StringBuilder();
-            StringBuilder userSurname = new StringBuilder();
-            SexEnum sex;
-
-            for (int i = 1; i < 100; i++)
-            {
-                // set userName
-                userName.Clear();
-                for (int j = 0; j < 10; j++)
-                {
-                    userName.Append(str[rand.Next(0, longueur)]);
-                }
-
-                // set userSurname
-                userSurname.Clear();
-                for (int k = 0; k < 10; k++)
-                {
-                    userSurname.Append(str[rand.Next(0, longueur)]);
-                }
-
-                // set Sex
-                if (i % 3 == 0)
-                    sex = SexEnum.Women;
-                else
-                    sex = SexEnum.Man;
-
-                UsersCollection.Add(new Student()
-                {
-                    StudentId = i + rand.Next(0, 500),
-                    Age = rand.Next(17, 40),
-                    Name = userName.ToString(),
-                    Surname = userSurname.ToString(),
-                    Sex = sex,
-                    EnrollmentDate = DateTime.Now,
-                    CurrentsClass = rand.Next(1, 5)
-                });
-            }
-
-            foreach (var item in UsersCollection)
-                DynamicCollection.Add(item);
-        }
     }
 }

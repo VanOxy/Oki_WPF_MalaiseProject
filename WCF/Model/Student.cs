@@ -11,7 +11,7 @@ namespace WCF.Model
         public int Age { get; set; }
         public SexEnum Sex { get; set; }
         public DateTime EnrollmentDate { get; set; }
-        public int CurrentsClass { get; set; }
+        public int CurrentClass { get; set; }
 
         // foreign keys
         public virtual ICollection<Course> Courses { get; set; }
@@ -45,7 +45,7 @@ namespace WCF.Model
                     break;
 
                 case "currentsclass":
-                    propertyValue = CurrentsClass.ToString();
+                    propertyValue = CurrentClass.ToString();
                     break;
 
                 default:

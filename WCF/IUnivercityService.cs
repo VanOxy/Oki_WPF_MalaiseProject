@@ -18,7 +18,7 @@ namespace WCF
         #region Students
 
         [OperationContract]
-        bool GetStudentsList();
+        StudentsList GetStudentsList();
 
         [OperationContract]
         bool AddStudent(Student student);
@@ -77,5 +77,43 @@ namespace WCF
         int GetFacultiesNumber();
 
         #endregion Utilities
+    }
+
+    [DataContract]
+    [Serializable]
+    public class StudentsList
+    {
+        private List<Student> _students;
+
+        public StudentsList()
+        {
+            _students = new List<Student>();
+        }
+
+        [DataMember]
+        public List<Student> Students
+        {
+            get { return _students; }
+            set { _students = value; }
+        }
+    }
+
+    [DataContract]
+    [Serializable]
+    public class TeachersList
+    {
+        private List<Teacher> _teachers;
+
+        public TeachersList()
+        {
+            _teachers = new List<Teacher>();
+        }
+
+        [DataMember]
+        public List<Teacher> Teachers
+        {
+            get { return _teachers; }
+            set { _teachers = value; }
+        }
     }
 }

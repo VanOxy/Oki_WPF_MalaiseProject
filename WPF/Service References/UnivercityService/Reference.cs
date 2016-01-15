@@ -15,6 +15,51 @@ namespace WPF.UnivercityService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentsList", Namespace="http://schemas.datacontract.org/2004/07/WCF")]
+    [System.SerializableAttribute()]
+    public partial class StudentsList : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WPF.UnivercityService.Student[] StudentsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WPF.UnivercityService.Student[] Students {
+            get {
+                return this.StudentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StudentsField, value) != true)) {
+                    this.StudentsField = value;
+                    this.RaisePropertyChanged("Students");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/WCF.Model")]
     [System.SerializableAttribute()]
     public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -29,7 +74,7 @@ namespace WPF.UnivercityService {
         private WPF.UnivercityService.Course[] CoursesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CurrentsClassField;
+        private int CurrentClassField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime EnrollmentDateField;
@@ -86,14 +131,14 @@ namespace WPF.UnivercityService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CurrentsClass {
+        public int CurrentClass {
             get {
-                return this.CurrentsClassField;
+                return this.CurrentClassField;
             }
             set {
-                if ((this.CurrentsClassField.Equals(value) != true)) {
-                    this.CurrentsClassField = value;
-                    this.RaisePropertyChanged("CurrentsClass");
+                if ((this.CurrentClassField.Equals(value) != true)) {
+                    this.CurrentClassField = value;
+                    this.RaisePropertyChanged("CurrentClass");
                 }
             }
         }
@@ -626,10 +671,10 @@ namespace WPF.UnivercityService {
         System.Threading.Tasks.Task<bool> TryLoginAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsList", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsListResponse")]
-        bool GetStudentsList();
+        WPF.UnivercityService.StudentsList GetStudentsList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsList", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsListResponse")]
-        System.Threading.Tasks.Task<bool> GetStudentsListAsync();
+        System.Threading.Tasks.Task<WPF.UnivercityService.StudentsList> GetStudentsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddStudent", ReplyAction="http://tempuri.org/IUnivercityService/AddStudentResponse")]
         bool AddStudent(WPF.UnivercityService.Student student);
@@ -739,11 +784,11 @@ namespace WPF.UnivercityService {
             return base.Channel.TryLoginAsync(email, password);
         }
         
-        public bool GetStudentsList() {
+        public WPF.UnivercityService.StudentsList GetStudentsList() {
             return base.Channel.GetStudentsList();
         }
         
-        public System.Threading.Tasks.Task<bool> GetStudentsListAsync() {
+        public System.Threading.Tasks.Task<WPF.UnivercityService.StudentsList> GetStudentsListAsync() {
             return base.Channel.GetStudentsListAsync();
         }
         

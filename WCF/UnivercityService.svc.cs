@@ -27,7 +27,7 @@ namespace WCF
                         Age = student.Age,
                         Sex = student.Sex,
                         SectionId = student.SectionId,
-                        CurrentsClass = student.CurrentsClass,
+                        CurrentClass = student.CurrentClass,
                         EnrollmentDate = student.EnrollmentDate
                     });
                     db.SaveChanges();
@@ -40,9 +40,29 @@ namespace WCF
             }
         }
 
-        public bool GetStudentsList()
+        public StudentsList GetStudentsList()
         {
-            throw new NotImplementedException();
+            using (var db = new UnivercityContext())
+            {
+                StudentsList list = new StudentsList();
+
+                foreach (var row in db.Students)
+                {
+                    list.Students.Add(new Student()
+                    {
+                        Id = row.Id,
+                        Name = row.Name,
+                        Surname = row.Surname,
+                        Sex = row.Sex,
+                        Age = row.Age,
+                        CurrentClass = row.CurrentClass,
+                        EnrollmentDate = row.EnrollmentDate,
+                        SectionId = row.SectionId
+                    });
+                }
+
+                return list;
+            }
         }
 
         public bool DeleteStudent(int StudentId)

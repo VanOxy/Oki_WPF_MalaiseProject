@@ -113,6 +113,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utlities\Generators.cs" />
     <Compile Include="Utlities\MD5-Hasher.cs" />
     <Compile Include="ViewModel\CoursViewModel.cs" />
     <Compile Include="ViewModel\FacultiesViewModel.cs" />
@@ -208,6 +209,12 @@
     </None>
     <None Include="Service References\UnivercityService\UnivercityService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UnivercityService\UnivercityService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UnivercityService\WPF.UnivercityService.StudentsList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

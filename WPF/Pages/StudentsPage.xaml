@@ -36,7 +36,7 @@
             <Label Content="Etudiants" Style="{StaticResource label}" />
 
             <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
-                <ComboBox Margin="5" MinWidth="80" ItemsSource="{Binding UserProperties}"
+                <ComboBox Margin="5" MinWidth="80" ItemsSource="{Binding StudentProperties}"
                           SelectedItem="{Binding SearchCriteria}" />
                 <TextBox Style="{StaticResource TextboxWithPlaceholder}" Tag="Write here..."
                          Text="{Binding SearchTextbox, UpdateSourceTrigger=PropertyChanged}" />
@@ -47,16 +47,20 @@
                  Command="{Binding ChangeToMainPageCommand}" />
 
         <DataGrid x:Name="StudentsDatagrid"
-                  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5" IsReadOnly="True"
+                  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5" IsReadOnly="True"  AutoGenerateColumns="False"
                   ItemsSource="{Binding DynamicCollection, Mode=TwoWay}"
-                  SelectedItem="{Binding SelectedUser, Mode=OneWayToSource}" />
-        <!--<DataGrid Grid.Column="2" Margin="5" ItemsSource="{Binding Collection}"
-                  AutoGenerateColumns="False" IsReadOnly="True">
+                  SelectedItem="{Binding SelectedStudent, Mode=OneWayToSource}">
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Age" Binding="{Binding Age}" />
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}" />
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}" />
+                <DataGridTextColumn Header="Sex" Binding="{Binding Sex}" />
+                <DataGridTextColumn Header="Enrollment Date" Binding="{Binding EnrollmentDate}" />
+                <DataGridTextColumn Header="Current Class" Binding="{Binding CurrentClass}" />
             </DataGrid.Columns>
-        </DataGrid>-->
+        </DataGrid>
 
         <!-- Invisible grid to fix Progress ring-->
         <Grid Grid.Row="1" Focusable="False">
@@ -155,9 +159,9 @@
                     </StackPanel.Resources>
 
                     <Label Content="Nom" />
-                    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" x:Name="ModifiedName" />
+                    <TextBox Text="{Binding SelectedStudent.Name, Mode=OneWay}" x:Name="ModifiedName" />
                     <Label Content="Age" />
-                    <TextBox Text="{Binding SelectedUser.Age, Mode=OneWay}" x:Name="ModifiedAge" />
+                    <TextBox Text="{Binding SelectedStudent.Age, Mode=OneWay}" x:Name="ModifiedAge" />
                     <Label Content="Sex" />
                     <ComboBox ItemsSource="{Binding SexEnumValues}" SelectedItem="{Binding SelectedSexEnum, Mode=OneWay}"
                               x:Name="ModifiedSex" />
@@ -177,11 +181,11 @@
                     </StackPanel.Resources>
 
                     <Label Content="Prenom" />
-                    <TextBox Text="{Binding SelectedUser.Surname, Mode=OneWay}" x:Name="ModifiedSurname" />
+                    <TextBox Text="{Binding SelectedStudent.Surname, Mode=OneWay}" x:Name="ModifiedSurname" />
                     <Label Content="Année d'études" />
-                    <TextBox Text="{Binding SelectedUser.CurrentsClass, Mode=OneWay}" x:Name="ModifiedStudiesYear" />
+                    <TextBox Text="{Binding SelectedStudent.CurrentClass, Mode=OneWay}" x:Name="ModifiedStudiesYear" />
                     <Label Content="Date d'éntrée" />
-                    <DatePicker SelectedDate="{Binding SelectedUser.EnrollmentDate, Mode=OneWay}" x:Name="ModifiedEntryDate" />
+                    <DatePicker SelectedDate="{Binding SelectedStudent.EnrollmentDate.Date, Mode=OneWay}" x:Name="ModifiedEntryDate" />
                 </StackPanel>
 
                 <Button Content="Modifier" Margin="5" Padding="5"

@@ -61,6 +61,6 @@
             <Label Content="{Binding FacultiesNumber}" Grid.Column="1" Grid.Row="4" Margin="5" />
         </Grid>
 
-        <mui:ModernProgressRing x:Name="progressRing" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" Grid.Column="2" />
+        <mui:ModernProgressRing x:Name="progressRingMain" IsActive="False" Style="{StaticResource ThreeBounceProgressRingStyle}" Grid.Column="2" />
     </Grid>
 </Page>

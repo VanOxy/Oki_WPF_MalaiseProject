@@ -33,10 +33,10 @@ namespace WPF.ViewModel
 
         public SelectorViewModel()
         {
-            _authentificationPage = new AuthentificationPage();
-            ActivePage = _authentificationPage;
-            //_mainPage = new MainPage();
-            //ActivePage = _mainPage;
+            //_authentificationPage = new AuthentificationPage();
+            //ActivePage = _authentificationPage;
+            _mainPage = new MainPage();
+            ActivePage = _mainPage;
             Messenger.Default.Register<ChangePageMessage>(this, ChangePage);
         }
 

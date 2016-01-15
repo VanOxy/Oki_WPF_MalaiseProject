@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPF.Model
 {
-    public enum SexEnum
-    {
-        Man,
-        Women
-    }
+    //public enum SexEnum
+    //{
+    //    Man,
+    //    Women
+    //}
 }
