@@ -108,11 +108,12 @@
     <Compile Include="Pages\StudentsPage.xaml.cs">
       <DependentUpon>StudentsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service References\WebService\Reference.cs">
+    <Compile Include="Service References\UnivercityService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utlities\MD5-Hasher.cs" />
     <Compile Include="ViewModel\CoursViewModel.cs" />
     <Compile Include="ViewModel\FacultiesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -198,17 +199,20 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\WebService\Service1.wsdl" />
-    <None Include="Service References\WebService\Service1.xsd">
+    <None Include="Service References\UnivercityService\UnivercityService.wsdl" />
+    <None Include="Service References\UnivercityService\UnivercityService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebService\Service11.xsd">
+    <None Include="Service References\UnivercityService\UnivercityService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebService\Service12.xsd">
+    <None Include="Service References\UnivercityService\UnivercityService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebService\WPF.WebService.CompositeType.datasource">
+    <None Include="Service References\UnivercityService\UnivercityService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UnivercityService\WPF.UnivercityService.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -219,25 +223,25 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WebService\" />
+    <Resource Include="src\img\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebService\Service1.disco" />
+    <WCFMetadataStorage Include="Service References\UnivercityService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebService\configuration91.svcinfo" />
+    <None Include="Service References\UnivercityService\UnivercityService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebService\configuration.svcinfo" />
+    <None Include="Service References\UnivercityService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebService\Reference.svcmap">
+    <None Include="Service References\UnivercityService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UnivercityService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="src\img\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

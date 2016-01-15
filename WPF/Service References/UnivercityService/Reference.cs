@@ -680,6 +680,12 @@ namespace WPF.UnivercityService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UnivercityService.IUnivercityService")]
     public interface IUnivercityService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/TryLogin", ReplyAction="http://tempuri.org/IUnivercityService/TryLoginResponse")]
+        bool TryLogin(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/TryLogin", ReplyAction="http://tempuri.org/IUnivercityService/TryLoginResponse")]
+        System.Threading.Tasks.Task<bool> TryLoginAsync(string email, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetData", ReplyAction="http://tempuri.org/IUnivercityService/GetDataResponse")]
         string GetData(string value);
         
@@ -692,17 +698,53 @@ namespace WPF.UnivercityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IUnivercityService/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<WPF.UnivercityService.CompositeType> GetDataUsingDataContractAsync(WPF.UnivercityService.CompositeType composite);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsList", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsListResponse")]
+        bool GetStudentsList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetStudentsList", ReplyAction="http://tempuri.org/IUnivercityService/GetStudentsListResponse")]
+        System.Threading.Tasks.Task<bool> GetStudentsListAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddStudent", ReplyAction="http://tempuri.org/IUnivercityService/AddStudentResponse")]
         bool AddStudent(WPF.UnivercityService.Student student);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddStudent", ReplyAction="http://tempuri.org/IUnivercityService/AddStudentResponse")]
         System.Threading.Tasks.Task<bool> AddStudentAsync(WPF.UnivercityService.Student student);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddTeacher", ReplyAction="http://tempuri.org/IUnivercityService/AddTeacherResponse")]
-        bool AddTeacher(WPF.UnivercityService.Teacher prof);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/DeleteStudent", ReplyAction="http://tempuri.org/IUnivercityService/DeleteStudentResponse")]
+        bool DeleteStudent(int StudentId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/AddTeacher", ReplyAction="http://tempuri.org/IUnivercityService/AddTeacherResponse")]
-        System.Threading.Tasks.Task<bool> AddTeacherAsync(WPF.UnivercityService.Teacher prof);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/DeleteStudent", ReplyAction="http://tempuri.org/IUnivercityService/DeleteStudentResponse")]
+        System.Threading.Tasks.Task<bool> DeleteStudentAsync(int StudentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/ModifyStudent", ReplyAction="http://tempuri.org/IUnivercityService/ModifyStudentResponse")]
+        bool ModifyStudent(WPF.UnivercityService.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/ModifyStudent", ReplyAction="http://tempuri.org/IUnivercityService/ModifyStudentResponse")]
+        System.Threading.Tasks.Task<bool> ModifyStudentAsync(WPF.UnivercityService.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetTeachersList", ReplyAction="http://tempuri.org/IUnivercityService/GetTeachersListResponse")]
+        bool GetTeachersList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetTeachersList", ReplyAction="http://tempuri.org/IUnivercityService/GetTeachersListResponse")]
+        System.Threading.Tasks.Task<bool> GetTeachersListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetCoursesList", ReplyAction="http://tempuri.org/IUnivercityService/GetCoursesListResponse")]
+        bool GetCoursesList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetCoursesList", ReplyAction="http://tempuri.org/IUnivercityService/GetCoursesListResponse")]
+        System.Threading.Tasks.Task<bool> GetCoursesListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetFacultiesList", ReplyAction="http://tempuri.org/IUnivercityService/GetFacultiesListResponse")]
+        bool GetFacultiesList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetFacultiesList", ReplyAction="http://tempuri.org/IUnivercityService/GetFacultiesListResponse")]
+        System.Threading.Tasks.Task<bool> GetFacultiesListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetSectionsList", ReplyAction="http://tempuri.org/IUnivercityService/GetSectionsListResponse")]
+        bool GetSectionsList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnivercityService/GetSectionsList", ReplyAction="http://tempuri.org/IUnivercityService/GetSectionsListResponse")]
+        System.Threading.Tasks.Task<bool> GetSectionsListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -732,6 +774,14 @@ namespace WPF.UnivercityService {
                 base(binding, remoteAddress) {
         }
         
+        public bool TryLogin(string email, string password) {
+            return base.Channel.TryLogin(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> TryLoginAsync(string email, string password) {
+            return base.Channel.TryLoginAsync(email, password);
+        }
+        
         public string GetData(string value) {
             return base.Channel.GetData(value);
         }
@@ -748,6 +798,14 @@ namespace WPF.UnivercityService {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
+        public bool GetStudentsList() {
+            return base.Channel.GetStudentsList();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetStudentsListAsync() {
+            return base.Channel.GetStudentsListAsync();
+        }
+        
         public bool AddStudent(WPF.UnivercityService.Student student) {
             return base.Channel.AddStudent(student);
         }
@@ -756,12 +814,52 @@ namespace WPF.UnivercityService {
             return base.Channel.AddStudentAsync(student);
         }
         
-        public bool AddTeacher(WPF.UnivercityService.Teacher prof) {
-            return base.Channel.AddTeacher(prof);
+        public bool DeleteStudent(int StudentId) {
+            return base.Channel.DeleteStudent(StudentId);
         }
         
-        public System.Threading.Tasks.Task<bool> AddTeacherAsync(WPF.UnivercityService.Teacher prof) {
-            return base.Channel.AddTeacherAsync(prof);
+        public System.Threading.Tasks.Task<bool> DeleteStudentAsync(int StudentId) {
+            return base.Channel.DeleteStudentAsync(StudentId);
+        }
+        
+        public bool ModifyStudent(WPF.UnivercityService.Student student) {
+            return base.Channel.ModifyStudent(student);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyStudentAsync(WPF.UnivercityService.Student student) {
+            return base.Channel.ModifyStudentAsync(student);
+        }
+        
+        public bool GetTeachersList() {
+            return base.Channel.GetTeachersList();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetTeachersListAsync() {
+            return base.Channel.GetTeachersListAsync();
+        }
+        
+        public bool GetCoursesList() {
+            return base.Channel.GetCoursesList();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetCoursesListAsync() {
+            return base.Channel.GetCoursesListAsync();
+        }
+        
+        public bool GetFacultiesList() {
+            return base.Channel.GetFacultiesList();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetFacultiesListAsync() {
+            return base.Channel.GetFacultiesListAsync();
+        }
+        
+        public bool GetSectionsList() {
+            return base.Channel.GetSectionsList();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetSectionsListAsync() {
+            return base.Channel.GetSectionsListAsync();
         }
     }
 }

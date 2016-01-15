@@ -8,6 +8,12 @@
       <xsd:import schemaLocation="http://localhost:61618/UnivercityService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WCF.Model" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IUnivercityService_TryLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:TryLogin" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_TryLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TryLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnivercityService_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
   </wsdl:message>
@@ -20,19 +26,59 @@
   <wsdl:message name="IUnivercityService_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetStudentsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsList" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetStudentsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsListResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnivercityService_AddStudent_InputMessage">
     <wsdl:part name="parameters" element="tns:AddStudent" />
   </wsdl:message>
   <wsdl:message name="IUnivercityService_AddStudent_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddStudentResponse" />
   </wsdl:message>
-  <wsdl:message name="IUnivercityService_AddTeacher_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddTeacher" />
+  <wsdl:message name="IUnivercityService_DeleteStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStudent" />
   </wsdl:message>
-  <wsdl:message name="IUnivercityService_AddTeacher_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddTeacherResponse" />
+  <wsdl:message name="IUnivercityService_DeleteStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_ModifyStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStudent" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_ModifyStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetTeachersList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachersList" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetTeachersList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachersListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetCoursesList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCoursesList" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetCoursesList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCoursesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetFacultiesList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFacultiesList" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetFacultiesList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFacultiesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetSectionsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectionsList" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_GetSectionsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectionsListResponse" />
   </wsdl:message>
   <wsdl:portType name="IUnivercityService">
+    <wsdl:operation name="TryLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/TryLogin" message="tns:IUnivercityService_TryLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/TryLoginResponse" message="tns:IUnivercityService_TryLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetData" message="tns:IUnivercityService_GetData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetDataResponse" message="tns:IUnivercityService_GetData_OutputMessage" />
@@ -41,17 +87,50 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetDataUsingDataContract" message="tns:IUnivercityService_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetDataUsingDataContractResponse" message="tns:IUnivercityService_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetStudentsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetStudentsList" message="tns:IUnivercityService_GetStudentsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetStudentsListResponse" message="tns:IUnivercityService_GetStudentsList_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddStudent">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/AddStudent" message="tns:IUnivercityService_AddStudent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/AddStudentResponse" message="tns:IUnivercityService_AddStudent_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddTeacher">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/AddTeacher" message="tns:IUnivercityService_AddTeacher_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/AddTeacherResponse" message="tns:IUnivercityService_AddTeacher_OutputMessage" />
+    <wsdl:operation name="DeleteStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/DeleteStudent" message="tns:IUnivercityService_DeleteStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/DeleteStudentResponse" message="tns:IUnivercityService_DeleteStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/ModifyStudent" message="tns:IUnivercityService_ModifyStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/ModifyStudentResponse" message="tns:IUnivercityService_ModifyStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeachersList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetTeachersList" message="tns:IUnivercityService_GetTeachersList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetTeachersListResponse" message="tns:IUnivercityService_GetTeachersList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoursesList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetCoursesList" message="tns:IUnivercityService_GetCoursesList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetCoursesListResponse" message="tns:IUnivercityService_GetCoursesList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacultiesList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetFacultiesList" message="tns:IUnivercityService_GetFacultiesList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetFacultiesListResponse" message="tns:IUnivercityService_GetFacultiesList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectionsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetSectionsList" message="tns:IUnivercityService_GetSectionsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetSectionsListResponse" message="tns:IUnivercityService_GetSectionsList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUnivercityService" type="tns:IUnivercityService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TryLogin">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/TryLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetData">
       <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetData" style="document" />
       <wsdl:input>
@@ -70,6 +149,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetStudentsList">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetStudentsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddStudent">
       <soap:operation soapAction="http://tempuri.org/IUnivercityService/AddStudent" style="document" />
       <wsdl:input>
@@ -79,8 +167,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddTeacher">
-      <soap:operation soapAction="http://tempuri.org/IUnivercityService/AddTeacher" style="document" />
+    <wsdl:operation name="DeleteStudent">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/DeleteStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStudent">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/ModifyStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeachersList">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetTeachersList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoursesList">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetCoursesList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacultiesList">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetFacultiesList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSectionsList">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetSectionsList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

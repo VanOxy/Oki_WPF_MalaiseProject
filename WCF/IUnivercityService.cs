@@ -13,10 +13,7 @@ namespace WCF
     public interface IUnivercityService
     {
         [OperationContract]
-        string GetData(string value);
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        bool TryLogin(string email, string password);
 
         #region Students
 

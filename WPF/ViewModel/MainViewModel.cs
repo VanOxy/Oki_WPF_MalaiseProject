@@ -17,7 +17,6 @@ namespace WPF.ViewModel
             SwitchToCoursesPageCommand = new RelayCommand(SwitchToCoursesPage);
             SwitchToSectionsPageCommand = new RelayCommand(SwitchToSectionsPage);
             SwitchToFacultiesPageCommand = new RelayCommand(SwitchToFacultiesPage);
-            AskWebServiceCommand = new RelayCommand(AskWebService);
         }
 
         #region Navigation
@@ -54,43 +53,5 @@ namespace WPF.ViewModel
         }
 
         #endregion Navigation
-
-        public ICommand AskWebServiceCommand { get; private set; }
-
-        private string _serviceAnswer;
-
-        public string ServiceAnswer
-        {
-            get { return _serviceAnswer; }
-            set
-            {
-                if (value == _serviceAnswer)
-                    return;
-                _serviceAnswer = value;
-                RaisePropertyChanged("ServiceAnswer");
-            }
-        }
-
-        private string _serviceAsk;
-
-        public string ServiceAsk
-        {
-            get { return _serviceAsk; }
-            set
-            {
-                if (_serviceAsk == value)
-                    return;
-                _serviceAsk = value;
-                RaisePropertyChanged("ServiceAsk");
-            }
-        }
-
-        private async void AskWebService()
-        {
-            using (var service = new WebService.Service1Client())
-            {
-                ServiceAnswer = await service.GetDataAsync(ServiceAsk);
-            }
-        }
     }
 }

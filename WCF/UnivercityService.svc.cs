@@ -12,9 +12,19 @@ namespace WCF
 {
     public class UnivercityService : IUnivercityService
     {
-        public string GetData(string value)
+        public bool TryLogin(string email, string password)
         {
-            return string.Format("Service answered: {0}", value);
+            using (var db = new UnivercityContext())
+            {
+                var query = from t in db.Teachers
+                            where t.Email == email && t.Password == password
+                            select t;
+
+                if (query.FirstOrDefault() != null)
+                    return true;
+                else
+                    return false;
+            }
         }
 
         public bool AddStudent(Student student)
@@ -26,6 +36,7 @@ namespace WCF
                     db.Students.Add(new Student()
                     {
                         Name = student.Name,
+                        Surname = student.Surname,
                         Age = student.Age,
                         Sex = student.Sex,
                         SectionId = student.SectionId,
@@ -42,39 +53,39 @@ namespace WCF
             }
         }
 
-        public bool AddTeacher(Teacher teacher)
+        public bool GetStudentsList()
         {
-            using (var db = new UnivercityContext())
-            {
-                try
-                {
-                    db.Teachers.Add(new Teacher()
-                    {
-                        Name = teacher.Name,
-                        Age = teacher.Age,
-                        Grade = teacher.Grade
-                    });
-                    db.SaveChanges();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
+            throw new NotImplementedException();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public bool DeleteStudent(int StudentId)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
+        }
+
+        public bool ModifyStudent(Student student)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetTeachersList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetCoursesList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetFacultiesList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetSectionsList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
