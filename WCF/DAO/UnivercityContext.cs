@@ -9,7 +9,8 @@ namespace WCF.DAO
 {
     public class UnivercityContext : DbContext
     {
-        public UnivercityContext() : base("Univercity")
+        public UnivercityContext()
+            : base("UnivercityDatabase")
         {
         }
 

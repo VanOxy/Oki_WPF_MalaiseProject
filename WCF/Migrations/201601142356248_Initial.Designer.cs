@@ -7,13 +7,13 @@ namespace WCF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class modifygardetype : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(modifygardetype));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601142053378_modify-garde-type"; }
+            get { return "201601142356248_Initial"; }
         }
         
         string IMigrationMetadata.Source
