@@ -58,26 +58,24 @@ namespace WCF
         bool GetSectionsList();
 
         #endregion Sections
-    }
 
-    [DataContract]
-    public class CompositeType
-    {
-        private bool boolValue = true;
-        private string stringValue = "Hello ";
+        #region Utilities
 
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
+        [OperationContract]
+        int GetStudentsNumber();
 
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        [OperationContract]
+        int GetTeachersNumber();
+
+        [OperationContract]
+        int GetCoursesNumber();
+
+        [OperationContract]
+        int GetSectionsNumber();
+
+        [OperationContract]
+        int GetFacultiesNumber();
+
+        #endregion Utilities
     }
 }

@@ -27,6 +27,8 @@ namespace WCF
             }
         }
 
+        #region Students
+
         public bool AddStudent(Student student)
         {
             using (var db = new UnivercityContext())
@@ -68,24 +70,86 @@ namespace WCF
             throw new NotImplementedException();
         }
 
+        #endregion Students
+
+        #region Teachers
+
         public bool GetTeachersList()
         {
             throw new NotImplementedException();
         }
+
+        #endregion Teachers
+
+        #region Courses
 
         public bool GetCoursesList()
         {
             throw new NotImplementedException();
         }
 
+        #endregion Courses
+
+        #region Faculties
+
         public bool GetFacultiesList()
         {
             throw new NotImplementedException();
         }
 
+        #endregion Faculties
+
+        #region Sections
+
         public bool GetSectionsList()
         {
             throw new NotImplementedException();
         }
+
+        #endregion Sections
+
+        #region Utilities
+
+        public int GetStudentsNumber()
+        {
+            using (var db = new UnivercityContext())
+            {
+                return (from s in db.Students select s).Count();
+            }
+        }
+
+        public int GetTeachersNumber()
+        {
+            using (var db = new UnivercityContext())
+            {
+                return (from s in db.Students select s).Count();
+            }
+        }
+
+        public int GetCoursesNumber()
+        {
+            using (var db = new UnivercityContext())
+            {
+                return (from s in db.Courses select s).Count();
+            }
+        }
+
+        public int GetSectionsNumber()
+        {
+            using (var db = new UnivercityContext())
+            {
+                return (from s in db.Sections select s).Count();
+            }
+        }
+
+        public int GetFacultiesNumber()
+        {
+            using (var db = new UnivercityContext())
+            {
+                return (from s in db.Faculties select s).Count();
+            }
+        }
+
+        #endregion Utilities
     }
 }

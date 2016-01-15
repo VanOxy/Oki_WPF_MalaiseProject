@@ -34,25 +34,23 @@ namespace WPF.Pages
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            string email = emailTxt.Text;
-            string password = passwordTxt.Password;
-            string hashedPassword = Utlities.MD5_Hasher.CreateMD5(password);
-
             errorMessage.Content = "";
             credentials.IsEnabled = false;
             progressRing.IsActive = true;
             bool _authentificationOk = false;
 
-            await Task.Run(() =>
+            string email = emailTxt.Text;
+            string password = passwordTxt.Password;
+            string hashedPassword = Utlities.MD5_Hasher.CreateMD5(password);
+
+            using (var service = new UnivercityService.UnivercityServiceClient())
             {
-                using (var service = new UnivercityService.UnivercityServiceClient())
-                {
-                    _authentificationOk = service.TryLogin(email, hashedPassword);
-                }
-            });
+                _authentificationOk = await service.TryLoginAsync(email, hashedPassword);
+            }
 
             if (_authentificationOk)
             {
+                progressRing.IsActive = false;
                 Messenger.Default.Send(new ChangePageMessage("main"));
             }
             else
