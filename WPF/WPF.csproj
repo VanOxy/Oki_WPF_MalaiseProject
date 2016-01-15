@@ -211,7 +211,19 @@
     <None Include="Service References\UnivercityService\UnivercityService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UnivercityService\WPF.UnivercityService.CoursesList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UnivercityService\WPF.UnivercityService.FacultiesList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UnivercityService\WPF.UnivercityService.SectionsList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\UnivercityService\WPF.UnivercityService.StudentsList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UnivercityService\WPF.UnivercityService.TeachersList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>

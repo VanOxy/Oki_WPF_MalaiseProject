@@ -8,12 +8,6 @@
       <xsd:import schemaLocation="http://localhost:61618/UnivercityService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WCF.Model" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IUnivercityService_TryLogin_InputMessage">
-    <wsdl:part name="parameters" element="tns:TryLogin" />
-  </wsdl:message>
-  <wsdl:message name="IUnivercityService_TryLogin_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TryLoginResponse" />
-  </wsdl:message>
   <wsdl:message name="IUnivercityService_GetStudentsList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentsList" />
   </wsdl:message>
@@ -62,6 +56,12 @@
   <wsdl:message name="IUnivercityService_GetSectionsList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSectionsListResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnivercityService_TryLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:TryLogin" />
+  </wsdl:message>
+  <wsdl:message name="IUnivercityService_TryLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TryLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnivercityService_GetStudentsNumber_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentsNumber" />
   </wsdl:message>
@@ -93,10 +93,6 @@
     <wsdl:part name="parameters" element="tns:GetFacultiesNumberResponse" />
   </wsdl:message>
   <wsdl:portType name="IUnivercityService">
-    <wsdl:operation name="TryLogin">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/TryLogin" message="tns:IUnivercityService_TryLogin_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/TryLoginResponse" message="tns:IUnivercityService_TryLogin_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetStudentsList">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetStudentsList" message="tns:IUnivercityService_GetStudentsList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetStudentsListResponse" message="tns:IUnivercityService_GetStudentsList_OutputMessage" />
@@ -129,6 +125,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetSectionsList" message="tns:IUnivercityService_GetSectionsList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetSectionsListResponse" message="tns:IUnivercityService_GetSectionsList_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="TryLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/TryLogin" message="tns:IUnivercityService_TryLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/TryLoginResponse" message="tns:IUnivercityService_TryLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetStudentsNumber">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnivercityService/GetStudentsNumber" message="tns:IUnivercityService_GetStudentsNumber_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnivercityService/GetStudentsNumberResponse" message="tns:IUnivercityService_GetStudentsNumber_OutputMessage" />
@@ -152,15 +152,6 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUnivercityService" type="tns:IUnivercityService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="TryLogin">
-      <soap:operation soapAction="http://tempuri.org/IUnivercityService/TryLogin" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetStudentsList">
       <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetStudentsList" style="document" />
       <wsdl:input>
@@ -226,6 +217,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetSectionsList">
       <soap:operation soapAction="http://tempuri.org/IUnivercityService/GetSectionsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TryLogin">
+      <soap:operation soapAction="http://tempuri.org/IUnivercityService/TryLogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

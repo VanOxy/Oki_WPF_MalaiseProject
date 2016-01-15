@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WPF.Pages"
       mc:Ignorable="d"
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="500" d:DesignWidth="900"
       Title="ProfessorsPage"
       DataContext="{Binding Source={StaticResource Locator}, Path=Professors}">
 
@@ -41,7 +41,21 @@
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
                       Width="2" IsEnabled="False" />
 
-        <StackPanel Grid.Column="2">
-        </StackPanel>
+        <Grid Grid.Column="2">
+            <DataGrid x:Name="StudentsDatagrid"
+                  Margin="5" IsReadOnly="True"  AutoGenerateColumns="False"
+                  ItemsSource="{Binding DynamicCollection, Mode=TwoWay}">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Surname" Binding="{Binding Surname}" />
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}" />
+                    <DataGridTextColumn Header="Sex" Binding="{Binding Sex}" />
+                    <DataGridTextColumn Header="Grade" Binding="{Binding Grade}" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

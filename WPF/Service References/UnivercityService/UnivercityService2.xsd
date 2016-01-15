@@ -7,4 +7,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="StudentsList" nillable="true" type="tns:StudentsList" />
+  <xs:complexType name="TeachersList">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF.Model" minOccurs="0" name="Teachers" nillable="true" type="q2:ArrayOfTeacher" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TeachersList" nillable="true" type="tns:TeachersList" />
+  <xs:complexType name="CoursesList">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF.Model" minOccurs="0" name="Courses" nillable="true" type="q3:ArrayOfCourse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CoursesList" nillable="true" type="tns:CoursesList" />
+  <xs:complexType name="FacultiesList">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCF.Model" minOccurs="0" name="Faculties" nillable="true" type="q4:ArrayOfFaculty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacultiesList" nillable="true" type="tns:FacultiesList" />
+  <xs:complexType name="SectionsList">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCF.Model" minOccurs="0" name="Sections" nillable="true" type="q5:ArrayOfSection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SectionsList" nillable="true" type="tns:SectionsList" />
 </xs:schema>

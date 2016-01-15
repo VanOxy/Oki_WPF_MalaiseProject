@@ -87,4 +87,17 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="SexEnum" nillable="true" type="tns:SexEnum" />
+  <xs:complexType name="ArrayOfFaculty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Faculty" nillable="true" type="tns:Faculty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFaculty" nillable="true" type="tns:ArrayOfFaculty" />
+  <xs:complexType name="Faculty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Faculty" nillable="true" type="tns:Faculty" />
 </xs:schema>
